@@ -1,0 +1,34 @@
+<% employee = Employee.find_by(id: session[:employee_id]) %>
+<% school = School.find_by(name: employee.name) %> 
+
+<div class="main">
+  <div class="container">
+    <h1 class="form-heading"><%= school.schoolname %>高等学校</h1>
+      <%= form_tag("/testkai/create") do %>
+        <div class="form2">
+                
+        <h3>チーフ</h3>
+        <p>
+          <input name="chief" value="<%= school.chief %>" >
+        </p>
+                
+        <h3>学生警備</h3>
+        <p>
+          <input name="security" value="<%= school.security %>" >
+        </p>
+                
+        <h3>本部員</h3>
+        <p>
+          <input name="staff" value="<%= school.staff %>" >
+        </p>
+                
+        <h3>監督</h3>
+        <p>
+          <input name="supervision" value="<%= school.supervision %>" >
+        </p>
+        
+        <p><input type="submit" value="送信"></p>
+        </div> 
+      <% end %>
+  </div>
+</div>

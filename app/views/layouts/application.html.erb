@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HomePage</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+          Its-KAI
+      </div>
+      <ul class="header-menus">
+        <% if @current_employee %>
+          <li>
+          <%= link_to("logout", "/logout", {method: :post}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("テスト会報告", "/login") %> 
+          </li> 
+        <% end %>  
+      </ul>
+    </header>
+    
+    
+    <! flash--------------->
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+    <!--  <p class="notice"><%= notice %></p> -->
+    <p class="alert"><%= alert %></p>
+    
+    <%= yield %>
+  </body>
+</html>
