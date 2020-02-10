@@ -15,10 +15,12 @@ class TestkaiController < ApplicationController
 
     schoolnameTemp = @school.schoolname
     nameTemp = @school.name
+    idTemp = @school.id
     @school.destroy
     # @member = Member.find_by(schoolname: school.schoolname)
     
     @school = School.new(
+      id: idTemp,
       schoolname: schoolnameTemp,
       name: nameTemp,
       chief: params[:chief], 
@@ -33,6 +35,7 @@ class TestkaiController < ApplicationController
     #  staff: params[:staff], 
     #  supervision: params[:supervision]
     #)
+    
     @school.save
     flash[:notice] = "success!"
     redirect_to("/testkai/index")
