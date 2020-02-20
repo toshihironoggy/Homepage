@@ -1,34 +1,38 @@
 <% employee = Employee.find_by(id: session[:employee_id]) %>
 <% school = School.find_by(name: employee.name) %> 
 
-<div class="main">
-  <div class="container">
-    <h1 class="form-heading"><%= school.schoolname %>高等学校</h1>
-      <%= form_tag("/testkai/create") do %>
-        <div class="form2">
-                
-        <h3>チーフ</h3>
-        <p>
-          <input name="chief" value="<%= school.chief %>" >
-        </p>
-                
-        <h3>学生警備</h3>
-        <p>
-          <input name="security" value="<%= school.security %>" >
-        </p>
-                
-        <h3>本部員</h3>
-        <p>
-          <input name="staff" value="<%= school.staff %>" >
-        </p>
-                
-        <h3>監督</h3>
-        <p>
-          <input name="supervision" value="<%= school.supervision %>" >
-        </p>
+<div>
+  <div class="col-md-4 offset-md-4">
+  <h2 class="text-center"><%= school.schoolname %>高等学校</h2>
+  
+  <%= form_tag("/testkai/create") do %>
+    <div class="form-group">
         
-        <p><input type="submit" value="送信"></p>
-        </div> 
-      <% end %>
+      <label>チーフ</label>
+      <p>
+        <input name="chief" class="form-control" value="<%= school.chief %>" >
+      </p>
+                
+      <label>学生警備</label>
+      <p>
+        <input name="security" class="form-control" value="<%= school.security %>" >
+      </p>
+                
+      <label>本部員</label>
+      <p>
+        <input name="staff" class="form-control" value="<%= school.staff %>" >
+      </p>
+                
+      <label>監督</label>
+      <p>
+        <input name="supervision" class="form-control" value="<%= school.supervision %>" >
+      </p>
+    </div>
+    
+    <div class="text-center">
+      <p><input type="submit" class="btn btn-primary" value="送信"></p>
+    </div> 
+  <% end %>
+  
   </div>
 </div>

@@ -11,9 +11,11 @@
 
   <body>
     <header>
-      <div class="header-logo">
+<!--
+      <h2 class="header-logo ml-5">
           Its-KAI
-      </div>
+      </h2>
+-->
       <ul class="header-menus">
         <% if @current_employee %>
           <li>
@@ -21,23 +23,25 @@
           </li>
         <% else %>
           <li>
-            <%= link_to("テスト会報告", "/login") %> 
+            <!--<%= link_to("テスト会報告", "/login") %> --> 
           </li> 
         <% end %>  
       </ul>
     </header>
     
     
-    <! flash--------------->
+    <div class="container">
       <% if flash[:notice] %>
-        <div class="flash">
-          <%= flash[:notice] %>
-        </div>
+        <p class="text-success"><%= flash[:notice] %></p>
       <% end %>
-
-    <!--  <p class="notice"><%= notice %></p> -->
-    <p class="alert"><%= alert %></p>
+      
+      <% if flash[:alert] %>
+        <p class="text-danger"><%= alert %></p>
+      <% end %>
+    </div>
     
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

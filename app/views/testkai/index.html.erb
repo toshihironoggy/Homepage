@@ -1,38 +1,45 @@
+<!--
 <div class="main">
     <div class="container">
         <h1 class="form-heading">テスト会</h1>
+-->
+<h2 class="mb-5">テスト会</h2>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+    <thead class="thead-light">
+      <tr><th>学校名</th>
+      <th>チーフ</th>
+      <th>学生警備</th>
+      <th>本部員</th>
+      <th>監督</th></tr>
+    </thead>
 
-        <table border="1" align="left">
-        <thead>
-            <tr>
-                <th>学校名</th>
-                <th>チーフ</th>
-                <th>学生警備</th>
-                <th>本部員</th>
-                <th>監督</th>
-            </tr>
-        </thead>
+    <tbody>
+    <% @schools.each do |school| %>
+      <tr>
+        <td><%= school.schoolname %></td>
+        <td><%= school.chief %></td>
+        <td><%= school.security %></td>
+        <td><%= school.staff %></td>
+        <td><%= school.supervision %></td>
+      </tr>
+    <% end %>
+    </tbody>
 
-        <% @schools.each do |school| %>
-            <tr>
-                <td><%= school.schoolname %></td>
-                <td><%= school.chief %></td>
-                <td><%= school.security %></td>
-                <td><%= school.staff %></td>
-                <td><%= school.supervision %></td>
-            </tr>
-        <% end %>
-
-        <tfoot>
-            <tr>
-                <th>合計</th>
-                <th><%= @schools.all.sum(:chief) %></th>
-                <th><%= @schools.all.sum(:security) %></th>
-                <th><%= @schools.all.sum(:staff) %></th>
-                <th><%= @schools.all.sum(:supervision) %></th>
-            </tr>
-        </tfoot>
-        </table>
-
+    <tfoot>
+      <tr>
+        <th>合計</th>
+        <th><%= @schools.all.sum(:chief) %></th>
+        <th><%= @schools.all.sum(:security) %></th>
+        <th><%= @schools.all.sum(:staff) %></th>
+        <th><%= @schools.all.sum(:supervision) %></th>
+      </tr>
+    </tfoot>
+    </table>
+  </div>
+</div>
+<!--
     </div>
 </div> 
+-->
