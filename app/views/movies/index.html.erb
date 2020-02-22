@@ -1,10 +1,26 @@
-<h1>動画で学ぼう</h1>
+<h2 class="mb-5">動画一覧</h2>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead class="thead-light">
+	      <tr>
+        <th></th>
+        <th>問題</th>
+        </tr> 
+      </thead>
+      <tbody>
+        <% @movies.each do |movie| %>
+          <tr>
+            <td>
+              <%= link_to image_tag("/movie_images/#{movie.image}", :size => "100x140"), "movies/#{movie.id}" %>
+            </td>
+            <td><%= link_to movie.title, "movies/#{movie.id}" %></td> 
+          </tr>
+        <% end %>  
+      </tbody>
+    </tbale>
 
-<%= video_tag 'H29MT1_1_1.MP4', autoplay: false, 
-controls: true,  loop: true, size:'10*10' %>
+  </div>
+</div>
 
 
-<hr>
-
-<%= video_tag 'H29MT1_1_2.MP4', autoplay: false, 
-controls: true,  loop: true, size:'10*10' %>

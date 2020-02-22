@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   post "login" => "employees#login"
   post "logout" => "employees#logout"
 
+  
   root "movies#index"
+  get "movies/:id" => "movies#show"
+  
+  
 
 end
