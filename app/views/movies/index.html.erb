@@ -1,26 +1,35 @@
-<h2 class="mb-5">動画一覧</h2>
-<div class="row">
+<h1 class="mt-3 mb-3">動画一覧</h1>
+
+  <!--
   <div class="col-md-12">
-    <table class="table table-striped">
-      <thead class="thead-light">
-	      <tr>
-        <th></th>
-        <th>問題</th>
-        </tr> 
+  -->
+  <div class="contaniner">
+    <table class="table">
+      <!--
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
       </thead>
+      -->
+        
       <tbody>
         <% @movies.each do |movie| %>
-          <tr>
-            <td>
-              <%= link_to image_tag("/movie_images/#{movie.image}", :size => "100x140"), "movies/#{movie.id}" %>
+          <tr bgcolor="#e5ffcc">
+            <td style="width:25%">
+              <div class="text-center">
+                <%= link_to image_tag("/movie_images/#{movie.image}", :size => "120x100"), "movies/#{movie.id}" %>
+              </div>
             </td>
-            <td><%= link_to movie.title, "movies/#{movie.id}" %></td> 
+            <div class="text-left">
+              <td class="h2 text-dark" style="width:75%"><%= link_to movie.title, "movies/#{movie.id}" %></td> 
+            </div>
           </tr>
         <% end %>  
       </tbody>
-    </tbale>
-
+    </table>
   </div>
-</div>
+ 
 
 
