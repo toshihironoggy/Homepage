@@ -1,13 +1,16 @@
 
 <div class="container">
-<h2 class="mt-3 mb-3 text-center" style="background-color:#e5ffcc"><%= @movie.title %></h2>
+  <h2 class="mt-3 mb-3 text-center" style="background-color:#e5ffcc"><%= @movie.title %></h2>
 
-<div class="text-center">
-  <div class="border">
-  <%= video_tag @movie.url, autoplay: false, 
-  width:"60%", height:"60%", controls: true,  loop: false, autobuffer: true %>
+  <div class="text-center">
+    <div class="border">
+    <%= video_tag @movie.url, autoplay: false, 
+    width:"60%", height:"60%", controls: true,  loop: false, autobuffer: true %>
+    </div>
   </div>
-</div>
+      <button type="button" class="btn btn-outline-primary btn-sm"> 
+      <%= link_to("一覧画面に戻る", movies_path) %>
+    </button>
 </div>
 
 
