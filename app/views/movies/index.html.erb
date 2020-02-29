@@ -16,23 +16,37 @@
         
       <tbody>
         <% @movies.each do |movie| %>
-          <tr bgcolor="#e5ffcc">
-            
+          <!-- <tr bgcolor="#e5ffcc"> -->
+          <tr>  
             <td style="width:25%">
               <div class="text-center">
-                <%= link_to image_tag("/movie_images/#{movie.image}", :size => "120x100"), "movies/#{movie.id}" %>
+                <%= link_to image_tag("/movie_images/#{movie.image}",:size => "120x100"), "movies/#{movie.id}" %>
               </div>
             </td>
             <td style="width:20%">
-              <%= movie.tag_name %>
+              <% movie.tag_list.add(movie.tag_name.split(","))%>
+              
+              <!--
+              
+              <% tag_list = movie.tag_name.split(",") %> 
+              <%= movie.tag_list %>
+              -->
+              
+              <%= render 'movies/tag_list', tag_list: movie.tag_list %>
             </td>
-            <td class="h2 text-dark text-left" style="width:55%"><%= link_to movie.title, "movies/#{movie.id}" %>
+            <td class="h2 text-left" style="width:55% color:black><%= link_to movie.title, "movies/#{movie.id}" %>
             </td>
             
           </tr>
         <% end %>  
       </tbody>
     </table>
+    
+    
+    <button type="button" class="btn btn-outline-primary"> 
+      <%= link_to("一覧画面に戻る", movies_path) %>
+    </button>
+    
   </div>
  
 
