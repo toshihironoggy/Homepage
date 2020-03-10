@@ -1,9 +1,5 @@
 <% tag_list.each do |tag| %>
   
-  <button type="button" class="btn btn-outline-primary btn-sm"> 
-  
-    <%= link_to tag, movies_path(search_tag: tag), :style => "color:black;"  %>
-  
-  </button>
-  
+      <%= link_to tag, movies_path(search_tag: tag), class:'btn btn-sm btn-outline-primary'%>
+    
 <% end %>
