@@ -1,16 +1,21 @@
-<h1 style="text-align:center" class="mt-3 mb-3">
-  <span class="fa fa-film" style="color:red;"></span>もぎアプリ</h1>
+<h2 style="text-align:center" class="mt-3 mb-3">
+  <span class="fa fa-film" style="color:red;"></span>もぎサプリ
+  </h2>
 
 <p>
-もぎアプリは、模擬テストの問題の解説を動画で行うサービスです。
+もぎサプリは、模擬テストの数学と英語の問題の解説を動画で行うサービスです。
 動画で復習し、同じ間違いは繰り返さないようにしましょう。
+</p>
+
+<p>
+観たい動画の問題番号をクリックしてね  
 </p>
 
   <% @movies.each do |movie| %>
     
     <div class="box2">
       <h3><span class="fa fa-film" style="color:red;"></span>
-        <%= link_to movie.title, "movies/#{movie.id}" , :style=>"color:#000000;"%>
+        <%= link_to movie.title, "movies/#{movie.id}" , :style=>"color:#000000;" %>
       </h3>
       <p>
         <% movie.tag_list.add(movie.tag_name.split(","))%>
