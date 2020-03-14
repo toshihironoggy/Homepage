@@ -2,16 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-label{
-  text-align: center;
+.schoolname {
+  margin-top: 30px;
 }
 
-.pull-down {
-  display: inline-block; 
+.index{
   margin-top: 20px;
-  margin-right: 10px;
 }
 
 .submit-btn{
   margin-top: 20px;
 }
+
+
+

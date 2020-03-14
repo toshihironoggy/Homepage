@@ -26,15 +26,9 @@ class TestkaiController < ApplicationController
       chief: params[:chief], 
       security: params[:security], 
       staff: params[:staff], 
-      supervision: params[:supervision]
+      supervision: params[:supervision],
+      content: params[:content]
     )
-    #@member = Member.new(
-    #  schoolname: school.schoolname,
-    #  chief: params[:chief], 
-    #  security: params[:security], 
-    #  staff: params[:staff], 
-    #  supervision: params[:supervision]
-    #)
     
     @school.save
     flash[:notice] = "success!"
