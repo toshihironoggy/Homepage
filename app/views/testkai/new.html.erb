@@ -7,29 +7,41 @@
   
   <%= form_tag("/testkai/create") do %>
     <div class="form-group">
-        
-      <label>チーフ</label>
-      <p>
-        <input name="chief" class="form-control" value="<%= school.chief %>" >
-      </p>
-                
-      <label>学生警備</label>
-      <p>
-        <input name="security" class="form-control" value="<%= school.security %>" >
-      </p>
-                
-      <label>本部員</label>
-      <p>
-        <input name="staff" class="form-control" value="<%= school.staff %>" >
-      </p>
-                
-      <label>監督</label>
-      <p>
-        <input name="supervision" class="form-control" value="<%= school.supervision %>" >
-      </p>
-    </div>
+      
+      <div class="pull-down">  
+        <label>チーフ</label>
+        <p>
+          <%= select_tag :chief, options_for_select((0..20).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>
+          <!-- <input name="chief" class="form-control" value="<%= school.chief %>" > -->
+        </p>
+      </div>
+      
+      <div class="pull-down">
+        <label>学生警備</label>
+        <p>
+          <%= select_tag :security, options_for_select((0..20).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>    
+          <!-- <input name="security" class="form-control" value="<%= school.security %>" > -->
+        </p>
+      </div>
+      
+      <div class="pull-down">
+        <label>本部員</label>
+        <p>
+          <%= select_tag :staff, options_for_select((0..20).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>   
+          <!-- <input name="staff" class="form-control" value="<%= school.staff %>" > -->
+        </p>
+      </div>          
+      
+      <div class="pull-down">
+        <label>監督</label>
+        <p>
+          <%= select_tag :supervision, options_for_select((0..99).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>   
+          <!-- <input name="supervision" class="form-control" value="<%= school.supervision %>" > -->
+        </p>
+      </div>
     
-    <div class="text-center">
+    
+    <div class="text-center submit-btn">
       <p><input type="submit" class="btn btn-primary" value="送信"></p>
     </div> 
   <% end %>
