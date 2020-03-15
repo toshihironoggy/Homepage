@@ -4,6 +4,17 @@ class TestkaiController < ApplicationController
   
   def index
     @schools = School.all
+    
+    respond_to do |format|
+      format.html do
+          #html用の処理を書く
+      end 
+      format.csv do
+        send_data render_to_string.encode(Encoding::Windows_31J, undef: :replace, row_sep: "\r\n", force_quotes: true), filename: "aaa.csv", type: :csv
+        
+      end
+    end
+    
   end
 
   def new
@@ -34,5 +45,7 @@ class TestkaiController < ApplicationController
     flash[:notice] = "success!"
     redirect_to("/testkai/index")
   end 
+  
+  
   
 end
