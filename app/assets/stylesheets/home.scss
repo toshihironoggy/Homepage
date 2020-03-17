@@ -7,30 +7,32 @@
    font-family: "MANIFESTO";
 }
 
+
 .top-main {  
-  position: absolute;
-  text-align: center;
+  margin:10px auto;
+  text-align:ceter; 
 }
 
-.title {
+.title{
   text-align: center;
   font-size: 60px;
 }
 
- .list{
-   display: inline-block;
-   text-align: left;
-   margin-top: 30px;
-   
- }
-
  .image{
+   text-align: center;
    margin-top: 50px;
  }
 
+
+
+ .list{
+  text-align:center;
+  margin-top: 30px;
+ }
+
+
 ul, li{
   list-style-type: none;
-  margin: 0;
 }
 
 
