@@ -14,9 +14,10 @@
   <% @movies.each do |movie| %>
     
     <div class="box2">
-      <h3><span class="fa fa-film" style="color:red;"></span>
-        <%= link_to movie.title, "movies/#{movie.id}" , :style=>"color:#000000;" %>
-      </h3>
+      <div class="movie-title">
+        <span class="fa fa-film" style="color:red;"></span>
+          <%= link_to movie.title, "movies/#{movie.id}" , :style=>"color:#000000;" %>
+      </div>
       <p>
         <% movie.tag_list.add(movie.tag_name.split(","))%>
         <%= render 'movies/tag_list', tag_list: movie.tag_list %>
