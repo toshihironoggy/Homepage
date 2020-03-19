@@ -16,11 +16,11 @@
     <div class="box2">
       <div class="movie-title">
         <span class="fa fa-film" style="color:red;"></span>
-          <%= link_to movie.title, "movies/#{movie.id}" , :style=>"color:#000000;" %>
+          <%= link_to movie.title, "mogisupple/#{movie.id}" , :style=>"color:#000000;" %>
       </div>
       <p>
         <% movie.tag_list.add(movie.tag_name.split(","))%>
-        <%= render 'movies/tag_list', tag_list: movie.tag_list %>
+        <%= render 'mogisupple/tag_list', tag_list: movie.tag_list %>
       </p>
     </div>  
   <% end %>

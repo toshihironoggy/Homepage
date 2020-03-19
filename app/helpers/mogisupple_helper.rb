@@ -1,0 +1,2 @@
+module MogisuppleHelper
+end
