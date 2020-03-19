@@ -1,0 +1,2 @@
+module TestkaiStartLoginHelper
+end
