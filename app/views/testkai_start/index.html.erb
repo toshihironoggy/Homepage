@@ -1,4 +1,8 @@
-<h2 class="mb-5">テスト会</h2>
+
+<% @testkai.each do |test| %>
+  <h2 class="mb-5"><%="#{test.year}年#{test.month}月#{test.day}日 第#{test.kai}回" %></h2>
+<% end %>
+
 <div class="row">
   <div class="col-md-12">
     <table class="table ">

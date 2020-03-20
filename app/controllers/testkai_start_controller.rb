@@ -4,14 +4,18 @@ class TestkaiStartController < ApplicationController
   
   def index
     @schools = School.all
+    @testkai = Testkai.all
     
     respond_to do |format|
       format.html do
           #html用の処理を書く
       end 
       format.csv do
-        send_data render_to_string.encode(Encoding::Windows_31J, undef: :replace, row_sep: "\r\n", force_quotes: true), filename: "開始報告.csv", type: :csv
-        
+        @testkai.each do |test|
+          send_data render_to_string.encode(Encoding::Windows_31J, 
+          undef: :replace, row_sep: "\r\n", force_quotes: true), 
+          filename: "#{test.year}年#{test.month}月#{test.day}日_開始報告.csv", type: :csv
+        end
       end
     end
   end
