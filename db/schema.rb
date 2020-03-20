@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_070926) do
+ActiveRecord::Schema.define(version: 2020_03_20_024658) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 2020_03_14_070926) do
     t.integer "staff"
     t.integer "supervision"
     t.text "content"
+    t.integer "student"
+    t.integer "classroom"
+    t.integer "mainroom"
+    t.text "endcontent"
   end
 
   create_table "taggings", force: :cascade do |t|

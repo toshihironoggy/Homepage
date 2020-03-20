@@ -4,20 +4,18 @@
     <table class="table ">
     <thead class="thead-light">
       <tr><th>学校名</th>
-      <th>チーフ</th>
-      <th>学生警備</th>
-      <th>本部員</th>
-      <th>監督</th></tr>
+      <th>受験人数</th>
+      <th>使用教室</th>
+      <th>本部</th>
     </thead>
 
     <tbody>
     <% @schools.each do |school| %>
       <tr>
         <td><%= school.schoolname %></td>
-        <td><%= school.chief %></td>
-        <td><%= school.security %></td>
-        <td><%= school.staff %></td>
-        <td><%= school.supervision %></td>
+        <td><%= school.student %></td>
+        <td><%= school.classroom %></td>
+        <td><%= school.mainroom %></td>
       </tr>
       <tr>
         <td></td>
@@ -29,9 +27,8 @@
 
     <tfoot>
       <tr>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>合計</th>
+        <th><%= @schools.all.sum(:student) %></th>
         <th></th>
         <th></th>
       </tr>
@@ -41,5 +38,5 @@
 </div>
 
   <div>
-    <%= link_to "CSV出力", testkai_start_index_path(format: :csv), class:"btn btn-outline-dark btn-sm" %>
+    <%= link_to "CSV出力", testkai_end_index_path(format: :csv), class:"btn btn-outline-dark btn-sm" %>
   </div>

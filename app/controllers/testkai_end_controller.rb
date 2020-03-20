@@ -1,6 +1,5 @@
-class TestkaiStartController < ApplicationController
-  
-  before_action :authenticate_employees
+class TestkaiEndController < ApplicationController
+before_action :authenticate_employees
   
   def index
     @schools = School.all
@@ -10,7 +9,7 @@ class TestkaiStartController < ApplicationController
           #html用の処理を書く
       end 
       format.csv do
-        send_data render_to_string.encode(Encoding::Windows_31J, undef: :replace, row_sep: "\r\n", force_quotes: true), filename: "開始報告.csv", type: :csv
+        send_data render_to_string.encode(Encoding::Windows_31J, undef: :replace, row_sep: "\r\n", force_quotes: true), filename: "終了報告.csv", type: :csv
         
       end
     end
@@ -27,21 +26,20 @@ class TestkaiStartController < ApplicationController
     nameTemp = @school.name
     idTemp = @school.id
     @school.destroy
-    # @member = Member.find_by(schoolname: school.schoolname)
-    
+  
+  
     @school = School.new(
       id: idTemp,
       schoolname: schoolnameTemp,
       name: nameTemp,
-      chief: params[:chief], 
-      security: params[:security], 
-      staff: params[:staff], 
-      supervision: params[:supervision],
+      student: params[:student], 
+      classroom: params[:classroom], 
+      mainroom: params[:mainroom],
       content: params[:content]
     )
     
     @school.save
     flash[:notice] = "success!"
-    redirect_to("/testkai_start/index")
+    redirect_to("/testkai_end/index")
   end 
 end

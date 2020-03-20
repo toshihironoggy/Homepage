@@ -16,12 +16,4 @@ CSV.generate do |csv|
     csv << column_values
   end
 
-  sums = [
-    "合計", 
-    @schools.all.sum(:chief),
-    @schools.all.sum(:security),
-    @schools.all.sum(:staff),
-    @schools.all.sum(:supervision)
-  ]
-  csv << sums  
 end
