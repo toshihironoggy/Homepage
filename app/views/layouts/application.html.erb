@@ -17,20 +17,20 @@
       <h2 class="header-logo ml-5">
           Its-KAI
       </h2>
--->
+      
       <ul class="header-menus">
-        <% if @current_employee %>
+         if @current_employee 
           <li>
-          <%= link_to("logout", "/logout", {method: :post}) %>
+          link_to("logout", "/logout", {method: :post}) 
           </li>
-        <% else %>
+         else 
           <li>
-            <!--<%= link_to("テスト会報告", "/login") %> --> 
+            <!-- link_to("テスト会報告", "/login") %>  
           </li> 
-        <% end %>  
+         end   
       </ul>
     </header>
-    
+-->    
    
     <div class="container">
       <% if flash[:notice] %>
