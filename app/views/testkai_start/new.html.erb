@@ -12,7 +12,8 @@
       <div class="form-group col-3">  
         <label>チーフ</label>
         
-          <%= select_tag :chief, options_for_select((0..20).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>
+          <%= select_tag :chief, options_for_select((0..20).to_a), 
+          class:"btn btn-outline-secondary dropdown-toggle", style:"border:1px solid #A9A9A9"%>
           <!-- <input name="chief" class="form-control" value="<%= school.chief %>" > -->
         
       </div>
@@ -20,7 +21,8 @@
       <div class="form-group col-3">
         <label>学生警備</label>
         
-          <%= select_tag :security, options_for_select((0..20).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>    
+          <%= select_tag :security, options_for_select((0..20).to_a), 
+          class:"btn btn-outline-secondary dropdown-toggle", style:"border:1px solid #A9A9A9" %>    
           <!-- <input name="security" class="form-control" value="<%= school.security %>" > -->
         
       </div>
@@ -28,7 +30,8 @@
       <div class="form-group col-3">
         <label>本部員</label>
         
-          <%= select_tag :staff, options_for_select((0..20).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>   
+          <%= select_tag :staff, options_for_select((0..20).to_a), 
+          class:"btn btn-outline-secondary dropdown-toggle", style:"border:1px solid #A9A9A9"%>   
           <!-- <input name="staff" class="form-control" value="<%= school.staff %>" > -->
         
       </div>          
@@ -36,7 +39,8 @@
       <div class="form-group col-3">
         <label>監督</label>
         
-          <%= select_tag :supervision, options_for_select((0..99).to_a),class:"btn btn-outline-dark dropdown-toggle"  %>   
+          <%= select_tag :supervision, options_for_select((0..99).to_a), 
+          class:"btn btn-outline-secondary dropdown-toggle", style:"border:1px solid #A9A9A9"%>   
           <!-- <input name="supervision" class="form-control" value="<%= school.supervision %>" > -->
         
       </div>
@@ -45,7 +49,8 @@
     
       <div class="form-group">
         <label>コメント</label>
-        <textarea name="content" class="form-control"  value="<%= school.content %>" ></textarea>
+        <textarea name="content" class="form-control"  value="<%= school.content %>" style="border:1px solid #A9A9A9">
+        </textarea>
       </div>
     
         

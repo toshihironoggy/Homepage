@@ -1,6 +1,7 @@
 class TestkaiStartLoginController < ApplicationController
 
   def login_form
+    @employees = Employee.all
   end
   
   def login

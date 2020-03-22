@@ -18,10 +18,8 @@
         <span class="fa fa-film" style="color:red;"></span>
           <%= link_to movie.title, "mogisupple/#{movie.id}" , :style=>"color:#000000;" %>
       </div>
-      <p>
-        <% movie.tag_list.add(movie.tag_name.split(","))%>
-        <%= render 'mogisupple/tag_list', tag_list: movie.tag_list %>
-      </p>
+      <% movie.tag_list.add(movie.tag_name.split(","))%>
+      <%= render 'mogisupple/tag_list', tag_list: movie.tag_list %>
     </div>  
   <% end %>
         

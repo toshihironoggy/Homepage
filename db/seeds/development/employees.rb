@@ -1,5 +1,5 @@
 Employee.create(
-  name: "田中",
+  name: "山田",
   password: "1234"
 )
 Employee.create(  

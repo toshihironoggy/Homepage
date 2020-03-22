@@ -1,6 +1,6 @@
 School.create(
   schoolname: "城南学園",
-  name: "田中",
+  name: "山田",
   chief: 0,
   security: 0,
   staff: 0,
