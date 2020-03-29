@@ -71,3 +71,5 @@ gem 'bootstrap','~> 4.1.1'
 gem 'jquery-rails', '~> 4.3.1'
 
 gem 'font-awesome-rails' #font awesomeを使うため
+
+gem 'kaminari'
