@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'slide/index'
   root 'home#top'
   
  
