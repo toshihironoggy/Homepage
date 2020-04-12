@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post 'testkai_end/create' => "testkai_end#create"
   
   resources :mogisupple
-  
   resources :employee
   
+  get 'slide/index' => "slide#index"
 end
