@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+
+
 @import "bootstrap";
 @import "font-awesome";
 
@@ -28,6 +31,24 @@
   margin-top: 0;
   margin-right: 20px;
 }
+
+.title {
+   font-family: "MANIFESTO";
+   float: left;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+
 
 @media (max-width: 760px){
   .thead-light {

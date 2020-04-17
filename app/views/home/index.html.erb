@@ -18,7 +18,25 @@
     <% end %>
   </div>
   
-  <div id="tab02">タブ2の内容<br>タブ2の内容</div>
+  <div id="tab02">
+    <% @slides.each do |slide| %>
+    <div class="box">
+      <div class="slide-title">
+       <%= link_to(slide.title, "/slide/#{slide.id}" , :style=>"color:#000000;") %>
+      </div>
+      
+      
+      <div>
+        <%= link_to image_tag( slide.image.split(",").first ), "/home/#{slide.id}"  %>
+      </div>
+      
+      
+      
+      <% slide.tag_list.add(slide.tag_name.split(","))%>
+      <%= render 'slide/tag_list', tag_list: slide.tag_list %>
+    </div>
+  <% end  %>
+    </div>
     
 </div>
 

@@ -15,16 +15,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
-  <body> 
-   
-   
-    <header>
-<!--
-      <h2 class="header-logo ml-5">
-          Its-KAI
-      </h2>
-      
-      <ul class="header-menus">
+   <body style="padding-bottom:5.0rem;">
+  <nav class="navbar-light bg-dark fixed-top">
+      <div class="container title" id ="logo">
+          IT'S KEY
+      </div>
+    </nav>
+<!--<ul class="header-menus">
          if @current_employee 
           <li>
           link_to("logout", "/logout", {method: :post}) 
@@ -34,10 +31,7 @@
             <!-- link_to("テスト会報告", "/login") %>  
           </li> 
          end   
-      </ul>
-    </header>
--->    
-   
+      </ul>-->    
     <div class="container">
       <% if flash[:notice] %>
         <p class="text-success"><%= flash[:notice] %></p>
@@ -47,11 +41,7 @@
         <p class="text-danger"><%= alert %></p>
       <% end %>
     </div>
-    
- 
     <div class="container">
-  
-    
       <%= yield %>
     </div>
     
