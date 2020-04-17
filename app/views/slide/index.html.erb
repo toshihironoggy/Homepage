@@ -2,18 +2,23 @@
   <span class="fa fa-slideshare" style="color:green;"></span>スライドサプリ
   </h2>
   
-  
-  <div class="box2">
-  
-    <div class="slick">
-      <div class="b"><%= image_tag "renritsu1.jpg" %></div>
+  <% @slides.each do |slide| %>
+    <div class="box">
+      <div class="slide-title">
+       <%= link_to(slide.title, "/slide/#{slide.id}" , :style=>"color:#000000;") %>
+      </div>
+      
+      
+      <div>
+        <%= link_to image_tag( slide.image.split(",").first ), "/slide/#{slide.id}"  %>
+      </div>
+      
+      
+      
+      <% slide.tag_list.add(slide.tag_name.split(","))%>
+      <%= render 'slide/tag_list', tag_list: slide.tag_list %>
     </div>
+  <% end  %>
   
-  </div>
-  <div class="a">  
-    <div class="b"><%= image_tag "renritsu2.jpg" %></div>
-    <div class="b"><%= image_tag "renritsu3.jpg" %></div>
-    <div class="b"><%= image_tag "renritsu4.jpg" %></div>
-  </div>
 </div>
 

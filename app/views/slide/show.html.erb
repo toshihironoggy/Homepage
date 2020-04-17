@@ -1,0 +1,19 @@
+<div class="col-md-4 offset-md-4"><h2 class="text-center mt-3">
+  <span class="fa fa-slideshare" style="color:green;"></span>スライドサプリ
+  </h2>
+  
+  
+  <div class="box2">
+    <div class="slick">
+      <div class="b"><%=  image_tag @slide_img_first %></div>
+    </div>
+  </div>
+  
+  <div class="a">  
+    <% @slide_img_arr.each do |slide|%>
+      <div class="b"><%= image_tag slide %></div>
+    
+    <% end %>
+  </div>
+</div>
+

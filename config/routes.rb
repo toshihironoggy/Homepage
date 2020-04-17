@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get 'slide/index'
+  
   root 'home#top'
+  
+  
+  get 'slide/index' => "slide#index"
+  get 'slide/:id'   => "slide#show"
   
  
   get "testkai_start/new" => "testkai_start#new" 
@@ -23,5 +27,7 @@ Rails.application.routes.draw do
   resources :mogisupple
   resources :employee
   
-  get 'slide/index' => "slide#index"
+ 
+  
+  
 end
