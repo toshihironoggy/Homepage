@@ -73,3 +73,4 @@ gem 'font-awesome-rails' #font awesomeを使うため
 gem 'kaminari'
 
 gem 'jquery-rails'
+
