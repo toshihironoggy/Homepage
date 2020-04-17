@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  root 'home#top'
-  
+  root "home#index"
+  get 'home/:id' => "home#show"
   
   get 'slide/index' => "slide#index"
   get 'slide/:id'   => "slide#show"
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'testkai_end/new' => "testkai_end#new"
   post 'testkai_end/create' => "testkai_end#create"
   
-  resources :mogisupple
+  
   resources :employee
   
  
