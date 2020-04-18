@@ -8,7 +8,11 @@ class HomeController < ApplicationController
       @movies = Movie.all.page(params[:page]).per(PER)
     end
     
-    @slides = Slide.all
+    if params[:search_slide_tag]
+      @slides = Slide.where("tag_name LIKE ?","%#{params[:search_slide_tag]}%").page(params[:page]).per(PER)
+    else 
+      @slides = Slide.all.page(params[:page]).per(PER)
+    end
     
   end
 

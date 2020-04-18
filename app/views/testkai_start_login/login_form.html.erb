@@ -20,24 +20,4 @@
       </div>
     <% end %>
   </div>
-  
-  <!===============================================>
-  <div class="col-md-4 offset-md-4">
-  <table class="table mt-3">
-    <thead class="thead-light">
-      <tr><th>社員名</th>
-      <th>パスワード</th>
-    </thead>
-
-    <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.name %></td>
-        <td><%= employee.password %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-  
-  </div>
 </div>

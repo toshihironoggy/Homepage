@@ -15,28 +15,14 @@
  */
 
 
-
 @import "bootstrap";
 @import "font-awesome";
 
-
+/* header ***********************/
 
 @font-face {
   font-family: "MANIFESTO";
   src: font-url('MANIFESTO.ttf') format("truetype");
-}
-
-.header-menus{
-  float: right;
-  margin-top: 0.8em;
-  margin-right: 2em;
-}
-
-.title {
-   font-family: "MANIFESTO";
-   float: left;
-   margin-top: 0.1em;
-   margin-left: 1em;
 }
 
 #logo {
@@ -50,8 +36,70 @@
   font-weight: bold;
 }
 
+.title {
+   font-family: "MANIFESTO";
+   float: left;
+   margin-top: 0.1em;
+   margin-left: 1em;
+}
+
+/* menusをアコーディオン ******/
+.header-menus{
+  float: right;
+  margin-top: 0.2em;
+  margin-right: 2em;
+}
+
+.header-menus {
+    max-width: 600px;
+}
+
+.header-menus a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+label {
+    display: block;
+    margin: 0 0 2px 0;
+    padding : 5px 0 2px 0;
+    line-height: 1;
+    color :#fff;
+    background : dark;
+    cursor :pointer;
+}
+
+input {
+    display: none;
+}
+
+.header-menus ul {
+    margin: 0;
+    padding: 0;
+    background :#f4f4f4;
+    list-style: none;
+}
+
+.header-menus li {
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+#menu_bar01:checked ~ #links01 li,
+#menu_bar02:checked ~ #links02 li {
+    height: 54px;
+    opacity: 1;
+}
 
 
+/* スマホ対応 ********************/
 @media (max-width: 760px){
   .thead-light {
     font-size: 80%;
