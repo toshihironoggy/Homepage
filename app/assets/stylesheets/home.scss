@@ -39,7 +39,7 @@ ul, li{
 /*　タブ *********/
 .tabnav{
     margin: 0;
-    padding: 0;
+    padding-top: 20px;
 }
 .tabnav li{
     display: inline;
@@ -63,4 +63,4 @@ ul, li{
 }
 
 /* topバー分　ずらす *********/
-body { padding-top: 70px; }
+body { padding-top: 90px; }
