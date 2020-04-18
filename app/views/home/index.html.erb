@@ -4,6 +4,7 @@
 </ul>
 
 <div class="tabcontent">
+  
   <div id="tab01">
     <% @movies.each do |movie| %>
     
@@ -16,7 +17,7 @@
         <%= render 'home/tag_list', tag_list: movie.tag_list %>
       </div>  
     <% end %>
-    
+    <% session[:tag_id] = 1%>
     <%= paginate @movies %>
     <%= link_to "一覧に戻る", root_path, class:"btn btn-outline-primary btn-sm" %>
   </div>
@@ -34,10 +35,9 @@
         <%= render 'slide/tag_list', tag_list: slide.tag_list %>
       </div>
     <% end  %>
+    
     <%= paginate @slides %>
     <%= link_to "一覧に戻る", root_path, class:"btn btn-outline-primary btn-sm" %>
-    
   </div>
-  
 </div>
 
