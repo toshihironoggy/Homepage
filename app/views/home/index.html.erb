@@ -17,7 +17,7 @@
         <%= render 'home/tag_list', tag_list: movie.tag_list %>
       </div>  
     <% end %>
-    <% session[:tag_id] = 1%>
+    
     <%= paginate @movies %>
     <%= link_to "一覧に戻る", root_path, class:"btn btn-outline-primary btn-sm" %>
   </div>
@@ -26,6 +26,7 @@
     <% @slides.each do |slide| %>
       <div class="box">
         <div class="slide-title">
+          <span class="fa fa-copy" style="color:blue;"></span>
          <%= link_to(slide.title, "/slide/#{slide.id}" , :style=>"color:#000000;") %>
         </div>
         <div>
@@ -36,8 +37,8 @@
       </div>
     <% end  %>
     
-    <%= paginate @slides %>
-    <%= link_to "一覧に戻る", root_path, class:"btn btn-outline-primary btn-sm" %>
+    
+    <%= link_to "一覧に戻る", root_path(anchor: 'tab02'), class:"btn btn-outline-primary btn-sm" %>
   </div>
 </div>
 
