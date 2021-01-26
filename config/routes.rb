@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   
-  root "home#index"
+  devise_for :users
+  get 'pages/index'
+  get 'pages/show'
+  
+  root 'pages#index'
+  get 'pages/show'
+  
+  #root "home#index"
   get 'home/:id' => "home#show"
   
   get 'slide/index' => "slide#index"

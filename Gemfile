@@ -75,3 +75,6 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 
+# Devise
+gem 'devise'
+
