@@ -17,6 +17,7 @@
     <iframe src="<%= @movie.url %>" frameborder="0"  allowfullscreen="no"></iframe>
     </div>
     -->
+    
     <% @movie.tag_list.add(@movie.tag_name.split(","))%>
     <p>
     <%= render 'home/tag_list_for_show', tag_list: @movie.tag_list %>

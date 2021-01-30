@@ -15,40 +15,42 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
-  <body style="padding-bottom:5.0rem;">
-    <nav class="navbar-light bg-dark fixed-top">
-      <div class="container title" id ="logo">
+  <body>
+    <header>
+      <div class="title">
           IT'S KEY
       </div>
-      <div class="header-menus">
-        
-          <label for="menu_bar01" class="fa fa-bars fa-2x" style="color:white;"></label> 
-          
-          <input type="checkbox" id="menu_bar01" class="accordion" />
-          <ul id="links01">
-            <li><%= link_to "開始報告", login_path %></li>
-            <li><%= link_to "終了報告", testkai_end_login_login_form_path %></li>
-            <li><%= link_to "トップ",   root_path %></li>
-          </ul>
-        
-      </div>
-    </nav>
-    <div class="container">
-      <% if flash[:notice] %>
-        <p class="text-success"><%= flash[:notice] %></p>
-      <% end %>
+    <header>
       
-      <% if flash[:alert] %>
-        <p class="text-danger"><%= alert %></p>
-      <% end %>
-    </div>
-    <div class="container">
-      <%= yield %>
+    
+    <div class="contents">
+      <div class="content-left">
+        <% if flash[:notice] %>
+          <p class="text-success"><%= flash[:notice] %></p>
+        <% end %>
+        
+        <% if flash[:alert] %>
+          <p class="text-danger"><%= alert %></p>
+        <% end %>
+      
+        <%= yield %>
+      </div>
+    
+      <nav class="content-right">
+        <% if user_signed_in? %>
+          <strong><%= link_to current_user.username, pages_show_path %></strong>
+          <%= link_to 'プロフィール変更', edit_user_registration_path %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'サインアップ', new_user_registration_path %>
+          <%= link_to 'ログイン', new_user_session_path %>
+        <% end %>
+      </nav>
     </div>
   </body>
 </html>    
     
-    
+<!--################################################################-->    
 <!--<ul class="header-menus">
          if @current_employee 
           <li>
@@ -59,5 +61,18 @@
             <!-- link_to("テスト会報告", "/login") %>  
           </li> 
          end   
-      </ul>-->    
+      </ul>
+-->    
 
+<!--
+      <div class="header-menus">
+        <label for="menu_bar01" class="fa fa-bars fa-2x" style="color:white;"></label> 
+        
+        <input type="checkbox" id="menu_bar01" class="accordion" />
+        <ul id="links01">
+          <li><%= link_to "開始報告", login_path %></li>
+          <li><%= link_to "終了報告", testkai_end_login_login_form_path %></li>
+          <li><%= link_to "トップ",   root_path %></li>
+        </ul>
+      </div>
+      -->

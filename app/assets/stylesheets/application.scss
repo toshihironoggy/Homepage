@@ -18,32 +18,48 @@
 @import "bootstrap";
 @import "font-awesome";
 
-/* header ***********************/
 
 @font-face {
   font-family: "MANIFESTO";
   src: font-url('MANIFESTO.ttf') format("truetype");
 }
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
+
+body{
+  padding: 0.1rem;
 }
 
+
+/************** ヘッダー ***************:*/
 .title {
+  font-size: 1.7rem;
+  color: #000;            /* font coolor black */
   font-family: "MANIFESTO";
-  float: left;
-  margin-top: 0.1em;
-  margin-left: 1em;
-  
+  font-weight: bold;      /* font bold*/   
+  border: solid 1px ;     /* 枠 */
+  padding: 0.2rem 0.2rem 0.2rem 1rem ;        /* 要素の内側の余白 */
+}
+
+.contents{
+  diplay: flex;
+  padding: 0.1rem;
   
 }
+
+.content-left{
+  border: solid 1px;
+  float: left;
+  width: 70%;
+}
+
+.content-right{
+  border: solid 1px;
+  float: left;
+  width: 28%;
+  margin-left: 1rem; 
+}
+
+
 
 /* menusをアコーディオン ******/
 .header-menus{
@@ -60,7 +76,7 @@
   display: block;
   padding: 10px;
   text-decoration: none;
-  color: #000;
+  color: #00f;
 }
 
 label {
@@ -68,14 +84,22 @@ label {
     margin: 0 0 0.2rem 0;
     padding : 0.4rem 0 0.2rem 0;
     line-height: 1;
-    color :#fff;
+    color :#00f;
     background : dark;
     cursor :pointer;
 }
 
+/***
 input {
     display: none;
 }
+**/
+
+.login {
+  padding: 0.5rem;
+  text-align:right;
+}
+
 
 .header-menus ul {
     margin: 0;
