@@ -66,15 +66,26 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#タグ
 gem 'acts-as-taggable-on','~> 6.0'
-gem 'bootstrap','~> 4.1.1'
 
-gem 'font-awesome-rails' #font awesomeを使うため
+#font awesomeを使うため
+gem 'font-awesome-rails' 
+
+#ページネーション
 gem 'kaminari'
 
+# Bootstrap
+gem 'bootstrap','~> 4.1.1'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 # Devise
 gem 'devise'
+
+# 日本語化
+gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
+
 
