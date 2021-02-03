@@ -94,13 +94,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'mt-5.herokuapp.com' }
-  ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['app199969019@heroku.com'],
-    :password       => ENV['1qpnohug6744'],
-    :domain         => 'heroku.com',
+  
+  config.action_mailer.smtp_settings  = {
+    :address        => "smtp.gmail.com",
+    :domain         => 'gmail.com',
+    :port           => 587,
+    :authentication => 'plain',
+    :user_name      => ENV['GMAIL_USERNAME'],
+    :password       => ENV['GMAIL_PASSWORD'],
+    
     :enable_starttls_auto => true
   }
 end
