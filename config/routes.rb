@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   
+  root to: 'maps#index'
+  resources :maps, only: [:index]
+  
+  get 'maps/index'
   devise_for :users
   #get 'pages/index'
   #get 'pages/show'
-  root 'pages#index'
+  
+  #root 'pages#index'
   get 'pages/show'
   
   #root "home#index"
