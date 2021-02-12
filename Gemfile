@@ -93,3 +93,7 @@ gem "geocoder"
 
 # JSとの連携
 gem "gon"
+
+
+#Google APIを公開さえないように
+gem "dotenv-rails"
