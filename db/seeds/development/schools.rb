@@ -1,22 +1,13 @@
 School.create(
   schoolname: "城南学園",
-  name: "山田",
-  chief: 0,
-  security: 0,
-  staff: 0,
-  supervision: 0,
-  student: 0,
-  classroom: 0,
-  mainroom: 0
+  address: "大阪市東住吉区照ヶ丘矢田2丁目14-10",
+  latitude: 34.60828,
+  longitude: 135.5359483
+  
 )
 School.create(
-  schoolname: "清明学院",
-  name: "五木",
-  chief: 0,
-  security: 0,
-  staff: 0,
-  supervision: 0,
-  student: 0,
-  classroom: 0,
-  mainroom: 0
+  schoolname: "大阪桐蔭",
+  address: "大阪府大東市中垣内3丁目1-1",
+  latitude: 33.60828,
+  longitude: 130.5359483
 )

@@ -88,4 +88,8 @@ gem 'devise'
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 
+# Goosle mapで住所→経度・緯度
+gem "geocoder"
 
+# JSとの連携
+gem "gon"

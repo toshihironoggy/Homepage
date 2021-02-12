@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_075921) do
+ActiveRecord::Schema.define(version: 2021_02_11_043603) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 2021_01_30_075921) do
     t.integer "classroom"
     t.integer "mainroom"
     t.text "endcontent"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "slides", force: :cascade do |t|

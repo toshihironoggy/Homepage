@@ -8,21 +8,31 @@
 </style>
 
 <script>
+
+  var center ={
+    lat: 34.703, // 緯度
+    lng: 135.568// 経度
+  }; 
+  
 function initMap(){
   
+  geocoder = new google.maps.Geocoder()
   
-  let map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 34.703, lng: 135.568},
-  zoom: 18
+  
+  let map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
+    center: center, // 地図の中心を指定
+    zoom: 14 // 地図のズームを指定
   });
+
+  var marker = new google.maps.Marker({ // マーカーの追加
+        position: center, // マーカーを立てる位置を指定
+      map: map // マーカーを立てる地図を指定
+   });
+
   
-  
-  
-  // 各地点のマーカーを作成
-  let maps = new google.maps.Marker({
-        position: new google.maps.LatLng({lat: 34.700, lng: 135.560}), 
-        map: map
-      });
-}
+
+}  
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlcl57QX3NkehgLmbcsv9CM3oy4w6oaBQ&callback=initMap" async defer></script>
+
+
