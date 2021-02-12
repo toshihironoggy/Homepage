@@ -8,6 +8,6 @@ School.create(
 School.create(
   schoolname: "大阪桐蔭",
   address: "大阪府大東市中垣内3丁目1-1",
-  latitude: 33.60828,
-  longitude: 130.5359483
+  latitude: 34.7081431,
+  longitude: 135.6454219
 )
