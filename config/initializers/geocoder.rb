@@ -9,7 +9,7 @@ Geocoder.configure(
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
   
   
-  api_key: ENV['GOOGLE_MAP_API_KEY'],               
+  api_key: ENV['GOOGLE_MAP_API_KEY']               
   # API key for geocoding service
   # cache: nil,                 # cache object (must respond to #[], #[]=, and #del)
   # cache_prefix: 'geocoder:',  # prefix (string) to use for all cache keys
