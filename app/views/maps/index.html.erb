@@ -25,7 +25,7 @@
   
     
       var marker = new google.maps.Marker({ // マーカーの追加
-          position: {lat:gon.school.latitude , lng:gon.school.longitude },// マーカーを立てる位置を指定
+          position: {lat:<%= @school.latitude %> , lng: <%= @school.longitude %> },// マーカーを立てる位置を指定
           map: map // マーカーを立てる地図を指定
       });
     
