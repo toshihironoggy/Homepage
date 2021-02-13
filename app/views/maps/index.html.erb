@@ -1,10 +1,11 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
+</script>
+
 <h2>gmap</h2>
 <div id='map'></div>
 
 <style>
-#map{
-  height: 400px;
-}
+#map{ height: 400px; }
 </style>
 
 <script>
@@ -14,28 +15,26 @@
     lng: 135.568// 経度
   }; 
   
-function initMap(){
+  function initMap(){
   
-  geocoder = new google.maps.Geocoder()
+    geocoder = new google.maps.Geocoder();
+  
+    let map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
+      center: center, // 地図の中心を指定
+      zoom: 14 // 地図のズームを指定
+    });
   
   
-  let map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
-    center: center, // 地図の中心を指定
-    zoom: 14 // 地図のズームを指定
-  });
-
-
-  <% @schools.each do |school| %>
-    var marker = new google.maps.Marker({ // マーカーの追加
-      position: {lat:<%= school.latitude %>, lng: <%= school.longitude %>}, // マーカーを立てる位置を指定
-      map: map // マーカーを立てる地図を指定
-   });
-  <% end %>
-  
-}  
+    <% @schools.each do |school| %>
+      var marker = new google.maps.Marker({ // マーカーの追加
+        position: { lat: <%= school.latitude %>, lng: <%= school.longitude %> }, // マーカーを立てる位置を指定
+        map: map // マーカーを立てる地図を指定
+     });
+    <% end %>
+    
+    }  
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
-</script>
+
 
 
