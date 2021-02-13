@@ -1,5 +1,5 @@
 <h2>gmap</h2>
-//<div id='map'></div>
+<div id='map'></div>
 
 <style>
 #map{
@@ -24,10 +24,6 @@ function initMap(){
     zoom: 14 // 地図のズームを指定
   });
 
-  //var marker = new google.maps.Marker({ // マーカーの追加
-  //    position: {lat: 34.60828, lng: 135.5359483}, // マーカーを立てる位置を指定
-  //    map: map // マーカーを立てる地図を指定
-  // });
 
   <% @schools.each do |school| %>
     var marker = new google.maps.Marker({ // マーカーの追加
@@ -38,6 +34,8 @@ function initMap(){
   
 }  
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
+</script>
 
 
