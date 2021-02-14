@@ -15,22 +15,45 @@
     lng: 135.568// 経度
   }; 
   
+  var infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+  var marker =[];
+  
   function initMap(){
     geocoder = new google.maps.Geocoder();
   
     let map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
       center: center, // 地図の中心を指定
-      zoom: 14 // 地図のズームを指定
+      zoom: 10 // 地図のズームを指定
     });
   
+    var i=0;
     <% @schools.each do |school| %>
-      var marker = new google.maps.Marker({ // マーカーの追加
+      marker[i] = new google.maps.Marker({ // マーカーの追加
           position: {lat:<%= school.latitude %> , lng: <%= school.longitude %> },// マーカーを立てる位置を指定
           map: map // マーカーを立てる地図を指定
       });
+      
+      // 各地点の吹き出しを作成
+      infoWindow[i] = new google.maps.InfoWindow({
+        // 吹き出しの内容
+        content: '<%= school.schoolname %>'
+      });
+      
+      markerEvent(i);
+      i=i+1;  
     <% end %>
   
   }  
+  
+  function markerEvent(i) {
+    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+  });
+  }
+  
+
+  
+  
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
