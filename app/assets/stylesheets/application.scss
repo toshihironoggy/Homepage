@@ -24,42 +24,32 @@
   src: font-url('MANIFESTO.ttf') format("truetype");
 }
 
-
 body{
   padding: 0.1rem;
 }
 
 
 /************** ヘッダー ***************:*/
+header{
+  background-color: #000; /*　背景色　黒*/
+  margin-bottom: 0.5rem; /* 下のコンテンツとのアキ*/
+}
+
 .title {
   font-size: 1.7rem;
-  color: #000;            /* font coolor black */
+  color: #FFF;  /* 文字の色  */
   font-family: "MANIFESTO";
   font-weight: bold;      /* font bold*/   
-  border: solid 1px ;     /* 枠 */
   padding: 0.2rem 0.2rem 0.2rem 1rem ;        /* 要素の内側の余白 */
 }
 
-.contents{
-  diplay: flex;
-  padding: 0.1rem;
-  
+ul {
+    list-style: none;
 }
 
-.content-left{
-  border: solid 1px;
-  float: left;
-  width: 70%;
+li {
+  margin: 0.3rem;
 }
-
-.content-right{
-  border: solid 1px;
-  float: left;
-  width: 28%;
-  margin-left: 1rem; 
-}
-
-
 
 /* menusをアコーディオン ******/
 .header-menus{
@@ -90,23 +80,18 @@ label {
 }
 
 /***
+.contents{
+  diplay: flex;
+  padding: 0.1rem;
+  
+}
+
+
 input {
     display: none;
 }
 **/
 
-.login {
-  padding: 0.5rem;
-  text-align:right;
-}
-
-
-.header-menus ul {
-    margin: 0;
-    padding: 0;
-    background :#f4f4f4;
-    list-style: none;
-}
 
 .header-menus li {
     height: 0;

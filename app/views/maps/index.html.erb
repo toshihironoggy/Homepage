@@ -1,5 +1,5 @@
 
-<h2>gmap</h2>
+<h3>テスト会の会場だYo</h3>
 <div id='map'></div>
 
 <style>
@@ -36,7 +36,7 @@
       // 各地点の吹き出しを作成
       infoWindow[i] = new google.maps.InfoWindow({
         // 吹き出しの内容
-        content: '<%= school.schoolname %>'
+        content: '<%= school.schoolname %>'+'<br>まもなく売り切れ。急げ'
       });
       
       markerEvent(i);
