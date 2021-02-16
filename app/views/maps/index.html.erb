@@ -50,14 +50,12 @@
       infoWindow[i].open(map, marker[i]); // 吹き出しの表示
   });
   }
-  
-
-  
-  
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
 </script>
 
-
+<div class="map-search">
+    <%= button_tag "ルート検索", id: "btn-search", class: "btn btn-primary", onclick: "search()" %>
+  </div>
 
