@@ -2,8 +2,6 @@
 <h3>テスト会の会場だYo</h3>
 <div id='map'></div>
 
-
-
 <style>
   #map{ 
     height: 400px; 
@@ -47,32 +45,65 @@ function initMap(){
     // 各地点の吹き出しを作成
     infoWindow[i] = new google.maps.InfoWindow({
       // 吹き出しの内容
-      content: '<%= school.schoolname %>'+'<br>まもなく売り切れ。急げ'
+      content: '<%= school.schoolname %>'+'<button id="go-station" value=<%= school.schoolname %> } >目的地に追加</button>'
     });
     
+    // ※※※ここからがボタンイベント追加部分です※※※
+    infoWindow[i].addListener('domready', () => {
+        document.getElementById('go-station').addEventListener('click', () => {
+            goStation();
+        });
+    });
+            
     markerEvent(i);
     i=i+1;  
   <% end %>
-
+  
   function markerEvent(i) {
     marker[i].addListener('click', function() { // マーカーをクリックしたとき
-    infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
     });
   }//markerEvant
+  
+  function goStation() {
+        // ※※※ここにボタンクリック時のイベント※※※
+        //alert(document.getElementById("go-station").value);
+        alert("1");
+        
+        target = document.getElementById("output");
+        
+        target.innerHTML =document.getElementById("go-station").value;
+        
+        
+    }//goStation
+   
+  
 
+  //「ルートを探す」をクリックしたとき
   document.getElementById("btn").onclick = function() {
    //getRoute();
     var address = document.getElementById("address").value;
     
-    //geocoder.geocode(address, moveTo);
-    
     geocoder.geocode({ address: address }, function(results, status){
       if (status === 'OK' && results[0]){
 
-        var marker = new google.maps.Marker({
-         position: results[0].geometry.location,
-         map: map
-       });
+       // var marker = new google.maps.Marker({
+        //position: results[0].geometry.location,
+        // map: map
+       // });
+
+        var request = {
+            origin: results[0].geometry.location,
+            destination: {lat:34.7081431,lng: 135.6454219},
+            travelMode: google.maps.TravelMode.WALKING
+          };
+
+        new google.maps.DirectionsService().route(request, function(response, status) {
+          new google.maps.DirectionsRenderer({
+            map:map,
+            directions: response
+          })
+        }); //new google.maps.DirectionsService
 
       }else{ 
         //住所が存在しない場合の処理
@@ -87,9 +118,6 @@ function initMap(){
 
 
 
-function moveTo(latlng) {
-  alert("2");
-}
 
 function getRoute() {
   var request = {
@@ -111,8 +139,10 @@ function getRoute() {
 
 
 <div class="form">
-  <label>出発
+  <label>出発地
     <input type="text" id="address">
+  </label>
+  <label>到着地<div id="output"></div>
   </label>
     <input type="button" id="btn" value="ルートを表示">
 </div>
