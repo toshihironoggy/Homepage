@@ -27,8 +27,8 @@ var directionsDisplay;
 
 function initMap(){
   var directions; //ルートのインスタンス
-  geocoder = new google.maps.Geocoder();
-
+  var geocoder = new google.maps.Geocoder();
+  
   directions = new google.maps.DirectionsService();
   
   var map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
@@ -58,8 +58,38 @@ function initMap(){
     marker[i].addListener('click', function() { // マーカーをクリックしたとき
     infoWindow[i].open(map, marker[i]); // 吹き出しの表示
     });
-  }
+  }//markerEvant
 
+  document.getElementById("btn").onclick = function() {
+   //getRoute();
+    var address = document.getElementById("address").value;
+    
+    //geocoder.geocode(address, moveTo);
+    
+    geocoder.geocode({ address: address }, function(results, status){
+      if (status === 'OK' && results[0]){
+
+        var marker = new google.maps.Marker({
+         position: results[0].geometry.location,
+         map: map
+       });
+
+      }else{ 
+        //住所が存在しない場合の処理
+        alert('住所が正しくないか存在しません。');
+      }//if
+      
+    }
+    )//geocoder.geocode
+    
+  }//document.getElementById
+}///initMap
+
+
+
+function moveTo(latlng) {
+  alert("2");
+}
 
 function getRoute() {
   var request = {
@@ -76,23 +106,20 @@ function getRoute() {
     })
   });
 }
-
-
-getRoute();
-
-
-
-  
-}
 </script>
 
 
-<div class="map-search">
-    <%= button_tag "ルート検索", id: "btn-search", class: "btn btn-primary", onclick: "getRoute()" %>
-  </div>
+
+<div class="form">
+  <label>出発
+    <input type="text" id="address">
+  </label>
+    <input type="button" id="btn" value="ルートを表示">
+</div>
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
 </script>
-
 
 
