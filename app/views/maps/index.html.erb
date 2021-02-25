@@ -62,7 +62,7 @@ function initMap(){
     infoWindow[i] = new google.maps.InfoWindow({
       // 内容
       position: {lat: school_lat[i] , lng: school_lng[i] },
-      content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">目的地に追加</button>` //`(バッククオテーション)
+      content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
       
     });
   
@@ -101,7 +101,8 @@ function initMap(){
     // ここにボタンクリック時のイベント
     target = document.getElementById("output");
     //target.innerHTML =document.getElementById("go-station").value;
-    target.innerHTML = name[number]; //学校名表示
+    //target.innerHTML = name[number]; //学校名表示
+    target.placeholder = name[number]; //学校名表示
     
     //document.getElementById("output_lat").value = lat[number];
     //document.getElementById("output_lng").value = lng[number];
@@ -157,12 +158,17 @@ function initMap(){
 
 
 <div class="form-group">
-  <label>出発地
-    <input class="form-control" type="text" id="address" placeholder='住所を入力して下さい'>
-  </label>
-  <label>目的地<div id="output"></div> 
-  </label>
-    <input type="button" class="btn btn-primary" id="btn" value="ルートを表示">
+    <div>出発地</div>
+    <div>  
+      <input class="form-control" type="text" id="address" placeholder='住所を入力'>
+    </div>
+  <div>目的地</div>
+  <div>  
+      <input class="form-control" type="text" id="output" placeholder='「ここに行く」をクリック' readonly>
+    </div>
+  <div>
+    <input type="button" class="btn btn-primary btn-sm" id="btn" value="ルートを表示">
+  </div>
 </div>
 
 
