@@ -4,7 +4,8 @@
 
 <style>
   #map{ 
-    height: 400px; 
+    height: 380px; 
+    
     
   }
 </style>
@@ -50,14 +51,12 @@ function initMap(){
     school_lat[i] =<%= school.latitude %>;
     school_lng[i] =<%= school.longitude %>;
     var id =<%= school.id %>;  
-
   
     // マーカーの追加
     marker[i] = new google.maps.Marker({ 
       position: {lat: school_lat[i] , lng: school_lng[i] },// マーカーの位置
       map: map // マーカーを立てる地図を指定
     });
-    
     
     // 各地点の情報ウインドウを作成
     infoWindow[i] = new google.maps.InfoWindow({
@@ -66,7 +65,6 @@ function initMap(){
       //content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
       content: `<a href="javascript:goStation(school_name, school_lat, school_lng, ${i});">${ school_name[i] }</a>`
     });
-  
     infoWindow[i].open(map);
     
     //情報ウインドウのボタンイベントができるよう追加
