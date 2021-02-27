@@ -30,7 +30,7 @@ let address_lng;
 var directionsService = new google.maps.DirectionsService();
 var directionsDisplay;
 
-
+ 
 function initMap(){
   var directions; //ルートのインスタンス
   var geocoder = new google.maps.Geocoder();
@@ -64,62 +64,30 @@ function initMap(){
       // 内容
       position: {lat: school_lat[i] , lng: school_lng[i] },
       //content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
-      content: `<a href='/school/${ id }'>${ school_name[i] }</a>`
+      content: `<a href="javascript:goStation(school_name, school_lat, school_lng, ${i});">${ school_name[i] }</a>`
     });
   
     infoWindow[i].open(map);
-    //情報ウインドウのボタンイベントができるよう追加
-   
-      infoWindow[i].addListener('domready', () => {
-        
-          document.getElementById("go-station0").addEventListener('click', () => {
-          goStation(school_name,school_lat,school_lng, 0);  
-          });
-          
-        document.getElementById(`go-station1`).addEventListener('click', () => {
-          goStation(school_name,school_lat,school_lng, 1);
-        }); 
-        
-      }); //addListerner
-  
     
+    //情報ウインドウのボタンイベントができるよう追加
+    //  infoWindow[i].addListener('domready', () => {
+    //      document.getElementById("go-station0").addEventListener('click', () => {
+    //      goStation(school_name,school_lat,school_lng, 0);  
+    //      });
+    //  }); //addListerner
     
     markerEvent(i); // マーカーにクリックイベントを追加
     
     i=i+1;
-  <% end %>////////////////////////////////////
-  
-  
-  
-  
-  function markerEvent(i) {
-    marker[i].addListener('click', function() { // マーカーをクリックしたとき
-      infoWindow[i].open(map, marker[i]); // 情報ウインドウ
-    });
-  }//markerEvant
-  
-  function goStation(name, lat, lng, number) {
-    // ここにボタンクリック時のイベント
-    target = document.getElementById("output");
-    //target.innerHTML =document.getElementById("go-station").value;
-    //target.innerHTML = name[number]; //学校名表示
-    target.placeholder = name[number]; //学校名表示
     
-    //document.getElementById("output_lat").value = lat[number];
-    //document.getElementById("output_lng").value = lng[number];
-    address_lat = lat[number];
-    address_lng = lng[number];
-
-  }//goStation
-   
-  //「ルートを探す」をクリックしたとき
-  document.getElementById("btn").onclick = function() {
+      document.getElementById("btn").onclick = function() {
+    alert();
    //getRoute();
     var address = document.getElementById("address").value;
     //var address_lat = document.getElementById("output_lat").value;
     //var address_lng = document.getElementById("output_lng").value;
     
-   
+    
     geocoder.geocode({ address: address }, function(results, status){
       if (status === 'OK' && results[0]){
 
@@ -151,8 +119,30 @@ function initMap(){
     )//geocoder.geocode
     
   }//document.getElementById
-}///initMap
-
+    
+    
+  <% end %>////////////////////////////////////
+}///initMap  
+ 
+  function markerEvent(i) {
+    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+      infoWindow[i].open(map, marker[i]); // 情報ウインドウ
+    });
+  }//markerEvant
+  
+  function goStation(name, lat, lng, number) {
+    // ここにボタンクリック時のイベント
+    target = document.getElementById("output");
+    target.placeholder = name[number]; //学校名表示
+    address_lat = lat[number];
+    address_lng = lng[number];
+    alert(address_lat);
+  }//goStation
+ 
+   
+  //「ルートを探す」をクリックしたとき
+  //もともとあった場所
+//}///initMap
 
 </script>
 
@@ -161,11 +151,11 @@ function initMap(){
 <div class="form-group">
     <div>出発地</div>
     <div>  
-      <input class="form-control" type="text" id="address" placeholder='住所を入力'>
+      <input class="form-control" type="text" id="address" placeholder='住所を入力してyo'>
     </div>
   <div>目的地</div>
   <div>  
-      <input class="form-control" type="text" id="output" placeholder='「ここに行く」をクリック' readonly>
+      <input class="form-control" type="text" id="output" placeholder='学校名をクリックしてyo' readonly>
     </div>
   <div>
     <input type="button" class="btn btn-primary btn-sm" id="btn" value="ルートを表示">
