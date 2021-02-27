@@ -49,7 +49,8 @@ function initMap(){
     school_name[i] ='<%= school.schoolname %>';
     school_lat[i] =<%= school.latitude %>;
     school_lng[i] =<%= school.longitude %>;
-    
+    var id =<%= school.id %>;  
+
   
     // マーカーの追加
     marker[i] = new google.maps.Marker({ 
@@ -62,8 +63,8 @@ function initMap(){
     infoWindow[i] = new google.maps.InfoWindow({
       // 内容
       position: {lat: school_lat[i] , lng: school_lng[i] },
-      content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
-      
+      //content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
+      content: `<a href='/school/${ id }'>${ school_name[i] }</a>`
     });
   
     infoWindow[i].open(map);

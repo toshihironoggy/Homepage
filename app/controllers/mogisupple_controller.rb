@@ -3,9 +3,11 @@ class MogisuppleController < ApplicationController
   
   def index
     if params[:search_tag]
-      @movies = Movie.where("tag_name LIKE ?","%#{params[:search_tag]}%").page(params[:page]).per(PER)
+      
+      @movies = Movie.where("tag_name LIKE ?","%#{params[:search_tag]}%")
+      
     else 
-      @movies = Movie.all.page(params[:page]).per(PER)
+      @movies = Movie.all
     end
   end
 

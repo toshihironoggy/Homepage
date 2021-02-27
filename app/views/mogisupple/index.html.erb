@@ -3,7 +3,7 @@
   </h2>
 
 <p>
-もぎサプリは、模擬テストの数学と英語の問題の解説を動画で行うサービスです。
+もぎサプリは、模擬テストの数学の問題の解説を動画で行うサービスです。
 動画で復習し、同じ間違いは繰り返さないようにしましょう。
 </p>
 
@@ -22,8 +22,6 @@
       <%= render 'mogisupple/tag_list', tag_list: movie.tag_list %>
     </div>  
   <% end %>
-        
-    <%= paginate @movies %>
     
   <%= link_to "一覧に戻る", mogisupple_index_path, class:"btn btn-outline-primary btn-sm" %>
    

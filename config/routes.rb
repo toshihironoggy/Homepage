@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   
+  #google map表示
   root to: 'maps#index'
   resources :maps, only: [:index]
-  
   get 'maps/index'
+  get 'school/:id' => 'maps#index'
+  
+  
+  
   devise_for :users
   #get 'pages/index'
   #get 'pages/show'
@@ -15,9 +19,11 @@ Rails.application.routes.draw do
   get 'home/:id' => "home#show"
   
   get 'slide/index' => "slide#index"
-  get 'slide/:id'   => "slide#show"
-  
- 
+  get 'slide/:id' => "slide#show"
+  #get 'mogisupple/index' => "mogisupple#index"
+  #get 'mogisupple/:id' => mogisupple#show"
+  resources :mogisupple
+   
   get "testkai_start/new" => "testkai_start#new" 
   get "testkai_start/index" => "testkai_start#index"
   post "testkai_start/create" => "testkai_start#create"
