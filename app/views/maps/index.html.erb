@@ -3,7 +3,8 @@
 <div id='map'></div>
 
 <style>
-  #map{ 
+  #map{
+    //width: 1000px;
     height: 300px; 
     
     
@@ -44,7 +45,7 @@ function initMap(){
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
-  
+  //くり返しでマーカーと情報ウインドウを複数表示
   var i=0;
   <% @schools.each do |school| %>
     school_name[i] ='<%= school.schoolname %>';
@@ -52,40 +53,28 @@ function initMap(){
     school_lng[i] =<%= school.longitude %>;
     var id =<%= school.id %>;  
   
-    // マーカーの追加
+    // マーカーの表示
     marker[i] = new google.maps.Marker({ 
       position: {lat: school_lat[i] , lng: school_lng[i] },// マーカーの位置
       map: map // マーカーを立てる地図を指定
     });
     
-    // 各地点の情報ウインドウを作成
+    // 情報ウインドウの表示
     infoWindow[i] = new google.maps.InfoWindow({
       // 内容
       position: {lat: school_lat[i] , lng: school_lng[i] },
       //content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
       content: `<a href="javascript:goStation(school_name, school_lat, school_lng, ${i});">${ school_name[i] }</a>`
     });
-    infoWindow[i].open(map);
-    
-    //情報ウインドウのボタンイベントができるよう追加
-    //  infoWindow[i].addListener('domready', () => {
-    //      document.getElementById("go-station0").addEventListener('click', () => {
-    //      goStation(school_name,school_lat,school_lng, 0);  
-    //      });
-    //  }); //addListerner
+    infoWindow[i].open(map); //情報ウインドウをオープン
     
     markerEvent(i); // マーカーにクリックイベントを追加
-    
     i=i+1;
     
     document.getElementById("btn").onclick = function() {
-    
    //getRoute();
     var address = document.getElementById("address").value;
-    //var address_lat = document.getElementById("output_lat").value;
-    //var address_lng = document.getElementById("output_lng").value;
-    
-    
+  
     geocoder.geocode({ address: address }, function(results, status){
       if (status === 'OK' && results[0]){
 
@@ -95,11 +84,10 @@ function initMap(){
        // });
 
         var request = {
-            origin: results[0].geometry.location,
-            //destination: {lat:34.7081431,lng: 135.6454219},
-            destination: new google.maps.LatLng(address_lat, address_lng),
-            travelMode: google.maps.TravelMode.WALKING
-          };
+          origin: results[0].geometry.location,
+          destination: new google.maps.LatLng(address_lat, address_lng),
+          travelMode: google.maps.TravelMode.WALKING
+        };
 
         new google.maps.DirectionsService().route(request, function(response, status) {
           new google.maps.DirectionsRenderer({
@@ -113,9 +101,7 @@ function initMap(){
         alert('住所が正しくないか存在しません。');
       }//if
       
-    }
-    )//geocoder.geocode
-    
+    })//geocoder.geocode
   }//document.getElementById
     
     
