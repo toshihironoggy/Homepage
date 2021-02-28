@@ -19,27 +19,29 @@ var center ={
   
 var infoWindow = []; // 情報ウインドウを複数表示させたいので、配列化
 var marker =[];
+var map;
+
+var geocoder;
+var directions; //ルートのインスタンス
 
 var school_id =[];
 var school_name =[];
 var school_lat =[];
 var school_lng =[];
 let schoolData = gon.schools;
-
-let address_lat;
-let address_lng;
+var address_lat;
+var address_lng;
 
 var directionsService = new google.maps.DirectionsService();
 var directionsDisplay;
 
  
 function initMap(){
-  var directions; //ルートのインスタンス
-  var geocoder = new google.maps.Geocoder();
   
+  geocoder = new google.maps.Geocoder();
   directions = new google.maps.DirectionsService();
   
-  var map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
+  map = new google.maps.Map(document.getElementById('map'), { // #mapに地図を埋め込む
     center: center, // 地図の中心を指定
     zoom: 10, // 地図のズームを指定
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -51,7 +53,7 @@ function initMap(){
     school_name[i] ='<%= school.schoolname %>';
     school_lat[i] =<%= school.latitude %>;
     school_lng[i] =<%= school.longitude %>;
-    var id =<%= school.id %>;  
+    
   
     // マーカーの表示
     marker[i] = new google.maps.Marker({ 
@@ -71,38 +73,7 @@ function initMap(){
     markerEvent(i); // マーカーにクリックイベントを追加
     i=i+1;
     
-    document.getElementById("btn").onclick = function() {
-   //getRoute();
-    var address = document.getElementById("address").value;
-  
-    geocoder.geocode({ address: address }, function(results, status){
-      if (status === 'OK' && results[0]){
 
-       // var marker = new google.maps.Marker({
-        //position: results[0].geometry.location,
-        // map: map
-       // });
-
-        var request = {
-          origin: results[0].geometry.location,
-          destination: new google.maps.LatLng(address_lat, address_lng),
-          travelMode: google.maps.TravelMode.WALKING
-        };
-
-        new google.maps.DirectionsService().route(request, function(response, status) {
-          new google.maps.DirectionsRenderer({
-            map:map,
-            directions: response
-          })
-        }); //new google.maps.DirectionsService
-
-      }else{ 
-        //住所が存在しない場合の処理
-        alert('住所が正しくないか存在しません。');
-      }//if
-      
-    })//geocoder.geocode
-  }//document.getElementById
     
     
   <% end %>////////////////////////////////////
@@ -125,6 +96,44 @@ function initMap(){
  
    
   //「ルートを探す」をクリックしたとき
+function search(){
+  //  document.getElementById("btn").onclick = function() {
+   //getRoute();
+    var address = document.getElementById("address").value;
+  
+    geocoder.geocode({ address: address }, function(results, status){
+      if (status === 'OK' && results[0]){
+       
+       // var marker = new google.maps.Marker({
+        //position: results[0].geometry.location,
+        // map: map
+       // });
+
+        var request = {
+          origin: results[0].geometry.location,
+          destination: new google.maps.LatLng(address_lat, address_lng),
+          travelMode: google.maps.TravelMode.WALKING
+        };
+         
+
+        new google.maps.DirectionsService().route(request, function(response, status) {
+        //directions.route(request, function(response, status) {
+          new google.maps.DirectionsRenderer({
+            map:map,
+            directions: response
+          })
+        }); //new google.maps.DirectionsService
+        
+      }else{ 
+        //住所が存在しない場合の処理
+        alert('住所が正しくないか存在しません。');
+      }//if
+      
+    })//geocoder.geocode
+  //}//document.getElementById
+}  
+  
+  
   //もともとあった場所
 //}///initMap
 
@@ -142,7 +151,7 @@ function initMap(){
       <input class="form-control" type="text" id="output" placeholder='学校名をクリックしてyo' readonly>
     </div>
   <div>
-    <input type="button" class="btn btn-primary btn-sm" id="btn" value="ルートを表示">
+    <input type="button" class="btn btn-primary btn-sm" id="btn" onclick="search()" value="ルートを表示">
   </div>
 </div>
 
