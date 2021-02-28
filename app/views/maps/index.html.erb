@@ -102,6 +102,7 @@ function search(){
     var address = document.getElementById("address").value;
   
     geocoder.geocode({ address: address }, function(results, status){
+      
       if (status === 'OK' && results[0]){
        
        // var marker = new google.maps.Marker({
@@ -114,11 +115,10 @@ function search(){
           destination: new google.maps.LatLng(address_lat, address_lng),
           travelMode: google.maps.TravelMode.WALKING
         };
-         
-
+        
         new google.maps.DirectionsService().route(request, function(response, status) {
         //directions.route(request, function(response, status) {
-          new google.maps.DirectionsRenderer({
+          directionsDisplay = new google.maps.DirectionsRenderer({
             map:map,
             directions: response
           })
@@ -131,11 +131,14 @@ function search(){
       
     })//geocoder.geocode
   //}//document.getElementById
+  directionsDisplay.setMap(null);
 }  
   
+function clearRoute() {
   
-  //もともとあった場所
-//}///initMap
+  directionsDisplay.setMap(null);
+}
+
 
 </script>
 
@@ -150,8 +153,9 @@ function search(){
   <div>  
       <input class="form-control" type="text" id="output" placeholder='学校名をクリックしてyo' readonly>
     </div>
-  <div>
-    <input type="button" class="btn btn-primary btn-sm" id="btn" onclick="search()" value="ルートを表示">
+  <div class="buttons">
+    <div class="button1"><input type="button" class="btn btn-primary btn-sm" id="btn" onclick="search()" value="ルートを表示"></div>
+    <div class="button2"><input type="button" class="btn btn-outline-primary btn-sm" onclick="clearRoute()" value="ルートをクリア"></div>
   </div>
 </div>
 
