@@ -32,9 +32,12 @@ let schoolData = gon.schools;
 var address_lat;
 var address_lng;
 
-var directionsService = new google.maps.DirectionsService();
-var directionsDisplay;
 
+
+//var directionsService = new google.maps.DirectionsService();
+
+//var directionsDisplay;
+var direct;
  
 function initMap(){
   
@@ -72,10 +75,6 @@ function initMap(){
     
     markerEvent(i); // マーカーにクリックイベントを追加
     i=i+1;
-    
-
-    
-    
   <% end %>////////////////////////////////////
 }///initMap  
  
@@ -99,6 +98,7 @@ function initMap(){
 function search(){
   //  document.getElementById("btn").onclick = function() {
    //getRoute();
+   
     var address = document.getElementById("address").value;
   
     geocoder.geocode({ address: address }, function(results, status){
@@ -122,7 +122,12 @@ function search(){
             map:map,
             directions: response
           })
+          /* 右カラムにルート表示 */  
+        directionsDisplay.setPanel(document.getElementById("directions_panel")); 
+          
         }); //new google.maps.DirectionsService
+        
+         
         
       }else{ 
         //住所が存在しない場合の処理
@@ -130,18 +135,17 @@ function search(){
       }//if
       
     })//geocoder.geocode
+    
+    
   //}//document.getElementById
   directionsDisplay.setMap(null);
 }  
+
   
 function clearRoute() {
-  
   directionsDisplay.setMap(null);
 }
-
-
 </script>
-
 
 
 <div class="form-group">
@@ -159,11 +163,12 @@ function clearRoute() {
   </div>
 </div>
 
+<div id="directions_panel" style="width:100%"></div>
 
+<!--
+<div id="route" style="width: 500px; height: 200px;overflow: scroll"></div>//
+-->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
 </script>
-
-
-
 
