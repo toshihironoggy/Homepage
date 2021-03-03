@@ -1,7 +1,13 @@
-// Place all the styles related to the maps controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.left-column{
+  float: left;
+  width: 66%;
+}
 
+.right-column{
+  float: left;
+  width: 30%;
+  margin-left: 1rem;
+}
 
 
 .btn {

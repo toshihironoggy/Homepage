@@ -1,16 +1,3 @@
-
-<h3>テスト会の会場だYo</h3>
-<div id='map'></div>
-
-<style>
-  #map{
-    //width: 1000px;
-    height: 300px; 
-    
-    
-  }
-</style>
-
 <script>
 var center ={
   lat: 34.703, // 会社近くの緯度
@@ -119,6 +106,7 @@ function search(){
         new google.maps.DirectionsService().route(request, function(response, status) {
         //directions.route(request, function(response, status) {
           directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
             map:map,
             directions: response
           })
@@ -126,16 +114,12 @@ function search(){
         directionsDisplay.setPanel(document.getElementById("directions_panel")); 
           
         }); //new google.maps.DirectionsService
-        
-         
-        
       }else{ 
         //住所が存在しない場合の処理
         alert('住所が正しくないか存在しません。');
       }//if
       
     })//geocoder.geocode
-    
     
   //}//document.getElementById
   directionsDisplay.setMap(null);
@@ -144,30 +128,48 @@ function search(){
   
 function clearRoute() {
   directionsDisplay.setMap(null);
+  directionsDisplay.setPanel(null);
+  
 }
 </script>
 
 
-<div class="form-group">
-    <div>出発地</div>
-    <div>  
-      <input class="form-control" type="text" id="address" placeholder='住所を入力してyo'>
+<h3>テスト会の会場だYo</h3>
+<body>
+
+  <div class="left-column">  
+    <div id='map' style="height: 300px;" >
     </div>
-  <div>目的地</div>
-  <div>  
-      <input class="form-control" type="text" id="output" placeholder='学校名をクリックしてyo' readonly>
-    </div>
-  <div class="buttons">
-    <div class="button1"><input type="button" class="btn btn-primary btn-sm" id="btn" onclick="search()" value="ルートを表示"></div>
-    <div class="button2"><input type="button" class="btn btn-outline-primary btn-sm" onclick="clearRoute()" value="ルートをクリア"></div>
+    
+    <!--<style>
+      #map{
+        width: 100%;
+        height: 300px; 
+      }
+    </style>-->
   </div>
-</div>
-
-<div id="directions_panel" style="width:100%"></div>
-
-<!--
-<div id="route" style="width: 500px; height: 200px;overflow: scroll"></div>//
--->
+  
+  <div class="right-column">
+    <div class="form-group">
+      <div>出発地
+      </div>
+      <div>  
+        <input class="form-control" type="text" id="address" placeholder='住所を入力してyo'>
+      </div>
+      <div>目的地
+      </div>
+      <div>  
+        <input class="form-control" type="text" id="output" placeholder='学校名をクリックしてyo' readonly>
+      </div>
+      <div class="buttons">
+        <div class="button1"><input type="button" class="btn btn-primary btn-sm" id="btn" onclick="search()" value="ルートを表示"></div>
+        <div class="button2"><input type="button" class="btn btn-outline-primary btn-sm" onclick="clearRoute()" value="クリア"></div>
+      </div>
+    </div>
+    <div id="directions_panel"></div> 
+  </div>
+  
+</body>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
 </script>
