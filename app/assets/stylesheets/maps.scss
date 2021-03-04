@@ -1,11 +1,12 @@
 
 .top-column{
-  //float: left;
   position: sticky;
   top:0;
   color: #fff;
   background: #333;
-  width: 100%;
+  //width: 100%;
+  z-index: 1;
+  
   &:before{
     content:"";
     position:absolute;
@@ -17,9 +18,9 @@
   }
 }
 
-.right-column{
-  //float: left;
-  width: 100%;
+.bottom-column{
+  //width: 100%;
+  z-index: 0;
   
 }
 
