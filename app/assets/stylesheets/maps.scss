@@ -5,7 +5,7 @@
   color: #fff;
   background: #333;
   //width: 100%;
-  z-index: 1;
+  z-index: 1; //Google mapが前面
   
   &:before{
     content:"";
@@ -20,10 +20,35 @@
 
 .bottom-column{
   //width: 100%;
-  z-index: 0;
+  z-index: 0; //ルート案内はGoogle mapの背面
   
 }
+.infobox {
+  display:none; //fadeInのため最初　隠しておく
+  position:absolute; //絶対位置
+  width:100%;
+  margin-top:10%; //上から10%の位置
+  
+  //background: #cde4ff;/*背景色*/
+  background: #0000ff;/*背景色*/
+  text-align:center;
+  color:#fff;
+  z-index:5; 
+  font-size:20px;
+}
 
+.alertbox {
+  display:none; //fadeInのため最初　隠しておく
+  position:absolute; //絶対位置
+  width:100%;
+  margin-top:10%; //上から10%の位置
+  
+  background: #ff1493;/*背景色*/
+  text-align:center;
+  color:#fff;
+  z-index:5; 
+  font-size:20px;
+}
 
 .btn {
   margin-top: 0.4rem;
