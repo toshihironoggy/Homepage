@@ -23,6 +23,12 @@
   z-index: 0; //ルート案内はGoogle mapの背面
   
 }
+
+.button2{
+  display: none;
+}
+
+
 .infobox {
   display:none; //fadeInのため最初　隠しておく
   position:absolute; //絶対位置
