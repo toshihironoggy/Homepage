@@ -11,10 +11,13 @@ var map;
 var geocoder;
 var directions; //ルートのインスタンス
 
-var school_id =[];
+//var school_id =[];
 var school_name =[];
 var school_lat =[];
 var school_lng =[];
+var school_max_seats=[]; //最大席数
+var school_left_seats=[]; //残り少ない席数のしきい値
+
 let schoolData = gon.schools;
 var address_lat;
 var address_lng;
@@ -40,16 +43,77 @@ function initMap(){
 
   //くり返しでマーカーと情報ウインドウを複数表示
   var i=0;
+  var icon;
+  var label;
+  
   <% @schools.each do |school| %>
     school_name[i] ='<%= school.schoolname %>';
     school_lat[i] =<%= school.latitude %>;
     school_lng[i] =<%= school.longitude %>;
-    
+    school_max_seats[i] =<%= school.max_num_seats %>;
+    school_left_seats[i]=<%= school.little_left_seats %>;
   
+  
+  var icon0={  
+      	fillColor: "#0000FF",                //塗り潰し色
+      	fillOpacity: 0.8,                    //塗り潰し透過率
+      	path: google.maps.SymbolPath.CIRCLE, //円を指定
+      	scale: 10,                           //円のサイズ
+      	strokeColor: "#0000FF",              //枠の色
+      	strokeWeight: 1.0                    //枠の透過率
+  };  
+  var label0={    
+    text: '○',                           //ラベル文字
+		color: '#FFFFFF',                    //文字の色
+		fontSize: '20px' 
+  };
+  
+  var icon1={  
+      	fillColor: "#008000",                //塗り潰し色
+      	fillOpacity: 0.8,                    //塗り潰し透過率
+      	path: google.maps.SymbolPath.CIRCLE, //円を指定
+      	scale: 10,                           //円のサイズ
+      	strokeColor: "#008000",              //枠の色
+      	strokeWeight: 1.0                    //枠の透過率
+  };  
+  var label1={    
+    text: '△',                           //ラベル文字
+		color: '#FFFFFF',                    //文字の色
+		fontSize: '18px' 
+  };  
+ 
+ var icon2={  
+      	fillColor: "#FF0000",                //塗り潰し色
+      	fillOpacity: 0.8,                    //塗り潰し透過率
+      	path: google.maps.SymbolPath.CIRCLE, //円を指定
+      	scale: 10,                           //円のサイズ
+      	strokeColor: "#FF0000",              //枠の色
+      	strokeWeight: 1.0                    //枠の透過率
+  };  
+  var label2={    
+    text: '×',                           //ラベル文字
+		color: '#FFFFFF',                    //文字の色
+		fontSize: '20px' 
+  };   
+  
+  
+  
+  
+    if ( school_max_seats[i] < school_left_seats[i]){ 
+	    icon =icon1;
+	    label =label1;
+    }else{
+      icon =icon0;
+	    label =label0;
+    }
+    
+    
     // マーカーの表示
     marker[i] = new google.maps.Marker({ 
       position: {lat: school_lat[i] , lng: school_lng[i] },// マーカーの位置
-      map: map // マーカーを立てる地図を指定
+      map: map, // マーカーを立てる地図を指定
+      icon: icon,
+      label: label
     });
     
     // 情報ウインドウの表示
@@ -57,7 +121,9 @@ function initMap(){
       // 内容
       position: {lat: school_lat[i] , lng: school_lng[i] },
       //content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
-      content: `<a href="javascript:goStation(school_name, school_lat, school_lng, ${i});">${ school_name[i] }</a>`
+      content: `<a href="javascript:goStation(school_name, school_lat, school_lng, ${i});">${ school_name[i] },${ school_max_seats[i] }</a>`,
+      pixelOffset: new google.maps.Size(10, -6)
+      
     });
     infoWindow[i].open(map); //情報ウインドウをオープン
     
@@ -160,15 +226,23 @@ function clearRoute() {
     </div>
   </div>
   
+  
   <form class="bottom-column" name="bottomcolumn">
     <div class="form-group">
-      <div>出発地
+      <div>学校</div>
+      <div>  
+        <input class="form-control" type="text" id="address">
       </div>
+    </div>
+
+
+<!--
+    <div class="form-group">
+      <div>出発地</div>
       <div>  
         <input class="form-control" type="text" id="address" placeholder='住所を入力してyo'>
       </div>
-      <div>目的地
-      </div>
+      <div>目的地</div>
       <div>  
         <input class="form-control" type="text" id="output" placeholder='学校名をクリックしてyo' readonly>
       </div>
@@ -179,8 +253,11 @@ function clearRoute() {
       </div>
     </div>
     <div id="directions_panel"></div> 
-  </form>
   
+-->  
+  </form>
+
+
 </body>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
