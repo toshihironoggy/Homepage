@@ -226,15 +226,15 @@ function clearRoute() {
     </div>
   </div>
   
-  
-  <form class="bottom-column" name="bottomcolumn">
+  <%= form_with model:@school, local:true do |f|%>
     <div class="form-group">
-      <div>学校</div>
-      <div>  
-        <input class="form-control" type="text" id="address">
-      </div>
+      <%= f.collection_select :school_id, School.all, :id, :schoolname ,:prompt => "学校を選択" %>
     </div>
-
+    <div class="text-center">
+      <%= f.submit "送信" , class:"btn btn-primary" %>
+    </div>
+    
+  <% end %>
 
 <!--
     <div class="form-group">

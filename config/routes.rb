@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   
   #google map表示
   root to: 'maps#index'
-  resources :maps, only: [:index]
-  get 'maps/index'
-  get 'school/:id' => 'maps#index'
+  get 'maps/index' =>'maps#index'
+  #↓これがないとNo routes match [POST] "/"がでる
+  post "/" => "maps#update"
   
-  
+  resources :maps
   
   devise_for :users
   #get 'pages/index'
@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get "testkai_start/index" => "testkai_start#index"
   post "testkai_start/create" => "testkai_start#create"
   
-  
   get "/login" => "testkai_start_login#login_form" 
   post "/login" => "testkai_start_login#login" 
   post "logout" => "testkai_start_login#login_form" 
@@ -41,10 +40,5 @@ Rails.application.routes.draw do
   get 'testkai_end/new' => "testkai_end#new"
   post 'testkai_end/create' => "testkai_end#create"
   
-  
   resources :employee
-  
- 
-  
-  
 end
