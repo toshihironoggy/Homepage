@@ -6,16 +6,9 @@ class MapsController < ApplicationController
   
   def update
 	  @school= School.find(params[:school_id])
-	  @school.max_num_seats = [@school.max_num_seats, -1].sum
+	  @school.max_num_seats = [@school.max_num_seats, (params[:number].to_i)*(-1)].sum
 	  @school.save
-	  redirect_to root_path, notice: @school.max_num_seats
-    
-    
-  
+	  redirect_to root_path
   end
-  
-  
-  
-  
   
 end
