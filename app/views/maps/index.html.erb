@@ -96,10 +96,10 @@ function initMap(){
 		fontSize: '20px' 
   };   
   
-  
-  
-  
-    if ( school_max_seats[i] < school_left_seats[i]){ 
+    if (school_max_seats[i] <=0 ){
+      icon =icon2;
+	    label =label2;
+    }else if( school_max_seats[i] < school_left_seats[i]){ 
 	    icon =icon1;
 	    label =label1;
     }else{
@@ -226,19 +226,21 @@ function clearRoute() {
     </div>
   </div>
   
-  <%= form_with model:@school, local:true do |f|%>
-    <div class="form-group">
-      <%= f.collection_select :school_id, School.all, :id, :schoolname ,:prompt => "会場名" %>
-    </div>
-    <div class="form-group">
-      <%= select_tag :number, options_for_select((1..10).to_a),:prompt => "発券数" %>
-    </div>
-    <div class="text-center">
-      <%= f.submit "送信" , class:"btn btn-primary" %>
-    </div>
-    
-  <% end %>
-
+  
+  <div class="col-md-4 offset-md-4 mt-3">
+    <%= form_with model:@school, local:true do |f|%>
+      <div class="form-group">
+        <%= f.collection_select :school_id, School.all, :id, :schoolname, {}, class:'form-control', :prompt=> "会場名" %>
+      </div>
+      <div class="form-group">
+        <%= select_tag :number, options_for_select((1..10).to_a), class:'form-control' %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "送信" , class:"btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  
 <!--
     <div class="form-group">
       <div>出発地</div>
