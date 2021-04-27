@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   #google map表示
-  root to: 'maps#index'
+  #root to: 'maps#index'
+  root to: 'shops#index'
   get 'maps/index' =>'maps#index'
   #↓これがないとNo routes match [POST] "/"がでる
   post "/" => "maps#update"

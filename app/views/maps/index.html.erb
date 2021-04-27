@@ -122,7 +122,8 @@ function initMap(){
       position: {lat: school_lat[i] , lng: school_lng[i] },
       //content: school_name[i]+'</br>'+`<button class="btn btn-primary btn-sm" id="go-station${i}">ここに行く</button>` //`(バッククオテーション)
       content: `<a href="javascript:goStation(school_name, school_lat, school_lng, ${i});">${ school_name[i] },${ school_max_seats[i] }</a>`,
-      pixelOffset: new google.maps.Size(10, -6)
+      pixelOffset: new google.maps.Size(10, -6),
+      opacity: 0,
       
     });
     infoWindow[i].open(map); //情報ウインドウをオープン
