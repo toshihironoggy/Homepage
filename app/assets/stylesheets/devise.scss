@@ -1,0 +1,18 @@
+.boxA:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+
+
+.from-here {
+  float: left;
+  width: 65%;
+  text-align: right;
+}
+
+.arrow{
+    padding:0 0 0 0.1rem;
+    float:left;
+    width: 35%;
+}

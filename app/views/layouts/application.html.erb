@@ -39,8 +39,8 @@
       <nav>
         <ul class="nav navbar-right" > <!--classはRailsチュート参照-->
         <% if user_signed_in? %>
-          <!-- <strong><%= link_to current_user.username, pages_show_path %></strong>  -->
-          <li><strong><%= link_to '詳細', pages_show_path %></strong></li>
+          <li><%= link_to current_user.username, pages_show_path %></li>
+          <li><%= link_to '詳細', pages_show_path %></li>
           <li><%= link_to 'モギサプリ' , mogisupple_index_path , :style=>"color:white;" %></li>
           <li><%= link_to 'プロフィール変更' , edit_user_registration_path, :style=>"color:white;" %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
@@ -56,13 +56,15 @@
     
     <div class="contents">
       <div>
-        <% if flash[:notice] %>
-          <p class="text-success"><%= flash[:notice] %></p>
-        <% end %>
         
-        <% if flash[:alert] %>
-          <p class="text-danger"><%= alert %></p>
-        <% end %>
+        
+      
+          <p class="text-success"><%= flash[:notice] %></p>
+    
+        
+        
+          <p class="text-danger"><%= flash[:alert] %></p>
+      
       
         <%= yield %>
         <!--デバッグ情報-->

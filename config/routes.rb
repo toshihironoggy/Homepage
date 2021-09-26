@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   #google map表示
   #root to: 'maps#index'
-  root to: 'shops#index'
+  #root to: 'shops#index'
+  
+  root to: 'mogisupple#index'
   get 'maps/index' =>'maps#index'
   #↓これがないとNo routes match [POST] "/"がでる
   post "/" => "maps#update"
@@ -10,9 +12,8 @@ Rails.application.routes.draw do
   resources :maps
   
   devise_for :users
-  #get 'pages/index'
-  #get 'pages/show'
   
+  #get 'pages/index'
   #root 'pages#index'
   get 'pages/show'
   

@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #ログイン後に遷移したいページへ
   def after_sign_in_path_for(resource)
     pages_show_path
   end
@@ -23,6 +24,7 @@ class ApplicationController < ActionController::Base
   #-------------------------
   private
   
+    #showページはログインしているユーザーだけにアクセスさせ、ログインしてない場合はログインページに遷移
     def sign_in_required
       redirect_to new_user_session_url unless user_signed_in?
     end
