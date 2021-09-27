@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   #ログイン後に遷移したいページへ
   def after_sign_in_path_for(resource)
-    pages_show_path
+    user_path(resource.id)
   end
 
   #-------------------------

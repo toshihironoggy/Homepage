@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  
+  
+
   #google map表示
   #root to: 'maps#index'
   #root to: 'shops#index'
@@ -43,4 +46,6 @@ Rails.application.routes.draw do
   post 'testkai_end/create' => "testkai_end#create"
   
   resources :employee
+  
+  resources :users, :only => [:show]
 end
