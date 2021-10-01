@@ -9,8 +9,6 @@
     <!-- bootstrap　エラーメッセージ -->
     <%= bootstrap_devise_error_messages! %>
   
-    
-  
     <!-- メールアドレス -->
     <div class="form-group">
       <%= f.label :email %>
@@ -29,8 +27,7 @@
     --------------------------------<% end %>
     </div>
     
-    
-    <!-- 確認用 -->
+    <!-- パスワード　確認用 -->
     <div class="form-group">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control', placeholder: '上記と同じパスワード' %>

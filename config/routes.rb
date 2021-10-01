@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-  
-  
-
   #google map表示
   #root to: 'maps#index'
   #root to: 'shops#index'
@@ -13,15 +10,16 @@ Rails.application.routes.draw do
   post "/" => "maps#update"
   
   resources :maps
+  #devise_for :users
   
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   
   #get 'pages/index'
   #root 'pages#index'
   get 'pages/show'
   
   #root "home#index"
-  get 'home/:id' => "home#show"
+  #get 'home/:id' => "home#show"
   
   get 'slide/index' => "slide#index"
   get 'slide/:id' => "slide#show"
@@ -46,6 +44,6 @@ Rails.application.routes.draw do
   post 'testkai_end/create' => "testkai_end#create"
   
   resources :employee
-  
   resources :users, :only => [:show]
+ 
 end

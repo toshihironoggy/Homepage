@@ -97,3 +97,6 @@ gem "gon"
 
 #Google APIを公開さえないように
 gem "dotenv-rails"
+
+gem 'mini_magick'
+gem 'carrierwave', '~> 2.0'

@@ -26,10 +26,7 @@
     <!-- gon用 -->
     <%= include_gon %>
     <%= javascript_include_tag "application" %>
-  
   </head>
-
-
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="title" ,id ="logo">
@@ -39,13 +36,10 @@
       <nav>
         <ul class="nav navbar-right" > <!--classはRailsチュート参照-->
         <% if user_signed_in? %>
-          <li><%= link_to current_user.username, pages_show_path %></li>
-          <li><%= link_to '詳細', pages_show_path %></li>
-          <li><%= link_to 'モギサプリ' , mogisupple_index_path , :style=>"color:white;" %></li>
+          <li><%= link_to current_user.username, new_user_session_url, :style=>"color:white;" %></li>
           <li><%= link_to 'プロフィール変更' , edit_user_registration_path, :style=>"color:white;" %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
         <% else %>
-          <li><%= link_to 'モギサプリ' , mogisupple_index_path, :style=>"color:white;" %></li>
           <li><%= link_to 'ログイン', new_user_session_path, :style=>"color:white;" %></li>
           <li><%= link_to '新規登録', new_user_registration_path, :style=>"color:white;" %>  <li>
         <% end %>
@@ -53,25 +47,15 @@
       </nav>
     </header>
       
-    
     <div class="contents">
       <div>
-        
-        
-      
-          <p class="text-success"><%= flash[:notice] %></p>
+        <p class="text-success"><%= notice %></p>
+        <p class="text-danger"><%= alert %></p>
     
-        
-        
-          <p class="text-danger"><%= flash[:alert] %></p>
-      
-      
         <%= yield %>
         <!--デバッグ情報-->
         <%= debug(params) if Rails.env.development? %>
       </div>
-    
-      
     </div>
   </body>
 </html>    

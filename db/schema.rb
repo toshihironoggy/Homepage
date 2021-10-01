@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_055108) do
+ActiveRecord::Schema.define(version: 2021_09_28_130639) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_055108) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

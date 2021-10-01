@@ -15,14 +15,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = User.find(current_user.id)
+    if @user.valid?
+      @user.update(update_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
+  end
+
 
   # DELETE /resource
   # def destroy
@@ -61,4 +68,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+  
+  
+  private
+  
+  def update_params
+    params.require(:user).permit(:username, :email, :current_password)
+  end
 end
