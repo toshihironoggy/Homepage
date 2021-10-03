@@ -1,7 +1,9 @@
 <h3><%= @user.username %></h3>
 
 <% if @user.avatar? %>
-  <%= image_tag @user.avatar.url %>
+  <%= image_tag @user.avatar.url , class: "icon" %>
 <% else %>
-  <%= image_tag ("noavatar.png") %>
+  <%= image_tag "default.png" , class: "icon"%>
 <% end %>
+
+
