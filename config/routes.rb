@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   
   get 'slide/index' => "slide#index"
   get 'slide/:id' => "slide#show"
-  #get 'mogisupple/index' => "mogisupple#index"
-  #get 'mogisupple/:id' => mogisupple#show"
-  resources :mogisupple
+  
+  get 'mogisupple/index' => "mogisupple#index"
+  get 'mogisupple/:id' => "mogisupple#show"
+  
+  #resources :mogisupple
    
   get "testkai_start/new" => "testkai_start#new" 
   get "testkai_start/index" => "testkai_start#index"
