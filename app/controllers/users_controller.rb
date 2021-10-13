@@ -9,4 +9,6 @@ class UsersController < ApplicationController
       @movies = Movie.all
     end
   end
+
+
 end

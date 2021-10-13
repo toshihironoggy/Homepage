@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -20,14 +20,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    @user = User.find(current_user.id)
-    if @user.valid?
-      @user.update(update_params)
-      redirect_to user_path(@user.id)
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+ 
+    #if update_resource(resource, account_update_params)
+    if resource.update_without_current_password(account_update_params)
+      yield resource if block_given?
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+          :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      sign_in resource_name, resource, :bypass => true
+      respond_with resource, :location => after_update_path_for(resource)
     else
-      render :edit
+      clean_up_passwords resource
+      respond_with resource
     end
   end
+
+
 
   # DELETE /resource
   # def destroy
@@ -52,9 +64,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:password])
+  end
 
   #アカウント登録後のリダイレクト先
   # def after_sign_up_path_for(resource)
@@ -66,12 +80,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    resource.update_without_current_password(params)
   end
   
   private
-  
   def update_params
-    params.require(:user).permit(:username, :email, :current_password, :avatar)
+    params.require(:user).permit(:username, :email,:avatar)
   end
+
+  
 end

@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   resources :maps
   #devise_for :users
   
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { 
+    registrations: 'users/registrations' ,
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
+  }
   
   #get 'pages/index'
   #root 'pages#index'
