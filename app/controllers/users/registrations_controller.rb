@@ -32,7 +32,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, flash_key
       end
       sign_in resource_name, resource, :bypass => true
-      respond_with resource, :location => after_update_path_for(resource)
+      #respond_with resource, :location => after_update_path_for(resource)
+      
+      #アカウント編集後、users#showにレダイレクト
+      redirect_to resource
     else
       clean_up_passwords resource
       respond_with resource
@@ -64,10 +67,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
+  # 許可するparamsがあれば、追加
   def configure_account_update_params
      devise_parameter_sanitizer.permit(:account_update, keys: [:username])
-     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:email])
+     #devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
      devise_parameter_sanitizer.permit(:account_update, keys: [:password])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
   end
 
   #アカウント登録後のリダイレクト先
@@ -75,6 +81,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   new_user_session_path(resource)
   # end
 
+
+  # パスワードを入力しなくても、アカウントを編集できるようにする
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
@@ -83,10 +91,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_current_password(params)
   end
   
+  
+  
+  
   private
-  def update_params
-    params.require(:user).permit(:username, :email,:avatar)
-  end
+  
 
   
 end
