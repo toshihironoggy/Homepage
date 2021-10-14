@@ -11,9 +11,11 @@
     <div class="movie-title">
       <span class="fa fa-film" style="color:red;"></span>
         <%= link_to movie.title, controller: :mogisupple, action: :show, id: movie , :style=>"color:#000000;" %>
+        <!-- mogisupple#showにリンクするように設定-->
     </div>
+    
     <% movie.tag_list.add(movie.tag_name.split(","))%>
-    <%= render 'mogisupple/tag_list', tag_list: movie.tag_list %>
+    <%= render 'mogisupple/tag_list', tag_list: movie.tag_list, locals: { user: @user } %>
   </div>  
 <% end %>
 

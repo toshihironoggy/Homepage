@@ -1,7 +1,8 @@
 <% tag_list.each do |tag| %>
   
-      <%= link_to tag, mogisupple_index_path(search_tag: tag), class:'btn btn-outline-primary 
-      btn-lg rounded-0'%>
-      
-    
+  <% if false %>-------
+  <%= link_to tag, mogisupple_index_path(search_tag: tag), class:'btn btn-outline-primary btn-lg rounded-0'%>
+  -----<% end %>
+  
+  <%= link_to tag, user_path(search_tag: tag), class:'btn btn-outline-primary btn-lg rounded-0'%>
 <% end %>
