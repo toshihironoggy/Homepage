@@ -4,5 +4,5 @@
   <%= link_to tag, mogisupple_index_path(search_tag: tag), class:'btn btn-sm btn-outline-primary'%>
   -----<% end %>
 
-  <%= link_to tag, user_path(search_tag: tag), class:'btn btn-sm btn-outline-primary'%>
+  <%= link_to tag, search_tag: tag, class:'btn btn-sm btn-outline-primary'%>
 <% end %>
