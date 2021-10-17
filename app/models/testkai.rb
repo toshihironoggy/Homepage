@@ -1,2 +1,0 @@
-class Testkai < ApplicationRecord
-end

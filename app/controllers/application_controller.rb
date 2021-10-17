@@ -1,22 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_employees
-  
   
   #Devise用
   protect_from_forgery with: :exception
   # deviseコントローラーにストロングパラメータを追加する 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-
-  def set_current_employees
-    @current_employee = Employee.find_by(id: session[:employee_id]) 
-  end
-
-  def authenticate_employees
-    if @current_employee == nil
-      redirect_to("/")
-    end
-  end
 
   #ログイン後に遷移したいページへ
   def after_sign_in_path_for(resource)
