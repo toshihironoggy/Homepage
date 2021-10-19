@@ -14,12 +14,17 @@
         <!-- mogisupple#showにリンクするように設定-->
     </div>
     
+    <% if Watched.find_by(user_id: @user.id, movie_id: movie.id) %>
+     watched
+    <% end %>
+    
     <% movie.tag_list.add(movie.tag_name.split(","))%>
     
     <% movie.tag_list.each do |tag| %>
       <%= link_to tag, user_path(@user.id, search_tag: tag), class: "btn btn-outline-primary btn-sm" %>
     <% end %>
-  </div>  
+  </div>
+  
   
 <% end %>
 <%= link_to("動画一覧に戻る", user_path(@user.id), class:"btn btn-outline-primary btn-sm") %>

@@ -12,6 +12,8 @@
   </div>
     
   <% @movie.tag_list.add(@movie.tag_name.split(","))%>
+  
+  
   <p>
   <%= render 'mogisupple/tag_list_for_show', tag_list: @movie.tag_list %>
   </p>
