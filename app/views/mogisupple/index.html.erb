@@ -13,7 +13,13 @@
       <div class="box2">
         <div class="movie-title">
           <span class="fa fa-film" style="color:red;"></span>
+          <%= link_to movie.title, controller: :mogisupple, action: :show, id: movie , :style=>"color:#000000;" %>
+          <!-- mogisupple#showにリンクするように設定-->
+          
+          <% if false %>
             <%= link_to movie.title, "mogisupple/#{movie.id}", :style=>"color:#000000;" %>
+          <% end %>  
+            
         </div>
         <% movie.tag_list.add(movie.tag_name.split(","))%>
         

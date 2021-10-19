@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   #root to: 'shops#index'
   
   root to: 'mogisupple#index'
+  
   get 'maps/index' =>'maps#index'
   #↓これがないとNo routes match [POST] "/"がでる
-  post "/" => "maps#update"
+  #post "/" => "maps#update"
   
   resources :maps
   #devise_for :users
@@ -18,8 +19,6 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
   
-  #get 'pages/index'
-  #root 'pages#index'
   get 'pages/show'
   
   #root "home#index"

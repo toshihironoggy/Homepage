@@ -13,10 +13,19 @@
     
   <% @movie.tag_list.add(@movie.tag_name.split(","))%>
   
+  <% @movie.tag_list.each do |tag| %>
   
-  <p>
+    <% if user_signed_in? %>
+      <%= link_to tag, user_path(search_tag: tag), class:'btn btn-outline-primary btn-lg'%>
+    <% else %>
+      <%= link_to tag, mogisupple_index_path(search_tag: tag), class:'btn btn-outline-primary btn-lg'%>
+    <% end %>
+  
+  <% end %>
+
+  <% if false %>-------
   <%= render 'mogisupple/tag_list_for_show', tag_list: @movie.tag_list %>
-  </p>
+  ----<% end %>
     
 </div>
 
