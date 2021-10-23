@@ -1,30 +1,94 @@
-<h3><%= @user.username %></h3>
+<div class="row">
+  <aside class="col-md-3">
+    <h3>
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url , class: "icon" %>
+      <% else %>
+        <%= image_tag "default.png" , class: "icon"%>
+      <% end %>
+      <%= @user.username %>
+    </h3>
+  </aside>
 
-<% if @user.avatar? %>
-  <%= image_tag @user.avatar.url , class: "icon" %>
-<% else %>
-  <%= image_tag "default.png" , class: "icon"%>
-<% end %>
-
-<% @movies.each do |movie| %>
-  <div class="box2">
-    <div class="movie-title">
-      <span class="fa fa-film" style="color:red;"></span>
-        <%= link_to movie.title, controller: :mogisupple, action: :show, id: movie.id , :style=>"color:#000000;" %>
-        <!-- mogisupple#showにリンクするように設定-->
-    </div>
-    
-    <% if Watched.find_by(user_id: @user.id, movie_id: movie.id) %>
-     watched
+  <div class="col-md-6">
+    <% @movies.each do |movie| %>
+      <div class="box2">
+        <div class="movie-title">
+          <span class="fa fa-film" style="color:red;"></span>
+            <%= link_to movie.title, controller: :mogisupple, action: :show, id: movie.id , :style=>"color:#000000;" %>
+            <!-- mogisupple#showにリンクするように設定-->
+        </div>
+        
+        <% if Watched.find_by(user_id: @user.id, movie_id: movie.id) %>
+         watched
+        <% end %>
+        
+        <% movie.tag_list.add(movie.tag_name.split(","))%>
+        
+        <% movie.tag_list.each do |tag| %>
+          <%= link_to tag, user_path(@user.id, search_tag: tag), class: "btn btn-outline-primary btn-sm" %>
+        <% end %>
+      </div>
     <% end %>
-    
-    <% movie.tag_list.add(movie.tag_name.split(","))%>
-    
-    <% movie.tag_list.each do |tag| %>
-      <%= link_to tag, user_path(@user.id, search_tag: tag), class: "btn btn-outline-primary btn-sm" %>
-    <% end %>
+    <%= link_to("動画一覧に戻る", user_path(@user.id), class:"btn btn-outline-primary btn-sm") %>
   </div>
+
+
+  <!-- <h3 class="text-center">カレンダー</h3> -->
+  <!-- カレンダーの表示 -->
+  <div class="col-md-3">
+  <div id="calendar"></div>
+  <!-- もしユーザーがログインしていたら -->
   
+      <script>
+      // CRUDを行う際にCSRF対策のtokenを発行
+          $(document).ready(function() {
+          var prepare = function(options, originalOptions, jqXHR) {
+            var token;
+            if (!options.crossDomain) {
+              token = $('meta[name="csrf-token"]').attr('content');
+              if (token) {
+                return jqXHR.setRequestHeader('X-CSRF-Token', token);
+              }
+            }
+          };
+          }
+          )
   
-<% end %>
-<%= link_to("動画一覧に戻る", user_path(@user.id), class:"btn btn-outline-primary btn-sm") %>
+          // カレンダー表示
+          $('#calendar').fullCalendar ({
+              header: {
+                  left: 'prev,next, today',
+                  center: 'month,agendaWeek,agendaDay',
+                  right: 'title'
+              },
+  
+              buttonText: {
+                    prev: "<",
+                    next: ">"
+              },
+  
+              timezone: 'UTC',
+              events: '/users/events.json',
+              navLinks: true,
+              selectable: true,
+              selectHelper: true,
+              // 日付クリック
+              dayClick : function ( date , jsEvent , view ) {
+                  $('#inputScheduleForm').modal('show');
+                  },
+  
+              // event クリックで編集、削除
+              eventClick : function(event, jsEvent , view) {
+                  jsEvent.preventDefault();
+                  $(`#inputScheduleEditForm${event.id}`).modal('show');
+              },
+  
+              eventMouseover : function(event, jsEvent , view) {
+                  jsEvent.preventDefault();
+              }
+          })
+  
+      </script>
+  <div>
+</div>

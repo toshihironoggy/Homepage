@@ -100,3 +100,8 @@ gem "dotenv-rails"
 
 gem 'mini_magick'
 gem 'carrierwave', '~> 2.0'
+
+# FullCalendar
+# gem 'jquery-rails', '4.3.3'←すでに入っていた
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

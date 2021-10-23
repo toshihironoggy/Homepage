@@ -11,6 +11,11 @@ class UsersController < ApplicationController
     else 
       @movies = Movie.all
     end
+    
+    #fullcalendar
+    @events = Event.where(user_id: @user.id)
+    @event = Event.new
+    
   end
 
 

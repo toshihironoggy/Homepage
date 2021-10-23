@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :username, uniqueness: { case_sensitive: :false }, length: { minimum: 1, maximum: 50 }
   validates :email ,uniqueness: { case_sensitive: :false} ,  length: { maximum: 50 }
   
+  has_many :events
+  
   #ここから
   def update_without_current_password(params, *options)
     params.delete(:current_password)
