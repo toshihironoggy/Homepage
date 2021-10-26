@@ -12,10 +12,7 @@ class UsersController < ApplicationController
       @movies = Movie.all
     end
     
-    #fullcalendar
-    @events = Event.where(user_id: @user.id)
-    @event = Event.new
-    
+    @schedules = @user.schedules
   end
 
 

@@ -105,3 +105,6 @@ gem 'carrierwave', '~> 2.0'
 # gem 'jquery-rails', '4.3.3'←すでに入っていた
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+
+#simple calendar
+gem 'simple_calendar', '~> 2.0'

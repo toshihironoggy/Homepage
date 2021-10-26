@@ -10,25 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_140852) do
-
-  create_table "employees", force: :cascade do |t|
-    t.string "name"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.boolean "disp_flg"
-    t.datetime "start"
-    t.datetime "end"
-    t.string "allDay"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2021_10_26_125400) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -37,6 +19,15 @@ ActiveRecord::Schema.define(version: 2021_10_20_140852) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "tag_name"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -93,15 +84,6 @@ ActiveRecord::Schema.define(version: 2021_10_20_140852) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
-  end
-
-  create_table "testkais", force: :cascade do |t|
-    t.string "kai"
-    t.integer "year"
-    t.integer "month"
-    t.integer "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
