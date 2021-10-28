@@ -1,7 +1,6 @@
 require_relative 'boot'
 
 require 'rails/all'
-
 require 'csv'
 
 
@@ -26,5 +25,10 @@ module HomePage
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    
+    # simple calendar 日曜始まり
+    config.beginning_of_week = :sunday
+    
+    
   end
 end
