@@ -1,10 +1,38 @@
 <div class="col-md-6 offset-md-3">
 
-  <h4 style="text-align:center" class="mt-3 mb-3">
+  <h1 style="text-align:center" class="mt-3 mb-3">
     <span class="fa fa-film" style="color:red;"></span>IT'S KEY
-    </h4>
-  
-  <p>
+    </h1>
+    <p class="center">
+    IT'S KEYは動画で解説するサイトです
+    </p>
+    
+    <%= link_to("サンプル動画を観る", root_path, class:"btn btn-outline-primary btn-block") %>
+    
+    
+    
+    <hr>
+    <p><b>
+    ログイン
+    </b></p>
+    会員の方は、メールアドレスとパスワードでログインしてください
+    <%= link_to 'ログイン', new_user_session_path, class:"btn btn-outline-primary btn-block" %>
+    
+    <hr>
+    <p><b>
+    まだ会員登録されていない方
+    </b></p>
+    
+    はじめて利用されてる方は、こちらから会員登録するとすべての動画が視聴できます。
+    <%= link_to '新規登録', new_user_registration_path, class:"btn btn-outline-primary btn-block" %>
+    
+    
+    
+    
+</div>     
+
+<% if false %>----------------------------------------
+<p>
   観たい動画の問題番号をクリックしてね  
   </p>
   
@@ -16,9 +44,7 @@
           <%= link_to movie.title, controller: :mogisupple, action: :show, id: movie , :style=>"color:#000000;" %>
           <!-- mogisupple#showにリンクするように設定-->
           
-          <% if false %>
-            <%= link_to movie.title, "mogisupple/#{movie.id}", :style=>"color:#000000;" %>
-          <% end %>  
+          <
             
         </div>
         <% movie.tag_list.add(movie.tag_name.split(","))%>
@@ -30,6 +56,4 @@
     <% end %>
       
    <%= link_to("動画一覧に戻る", mogisupple_index_path, class:"btn btn-outline-primary btn-sm") %>
-</div>     
-
-
+------------------------------------<% end %>
