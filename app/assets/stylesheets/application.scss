@@ -148,10 +148,13 @@ input {
 
 // カレンダーの設定
 .simple-calendar {
+  
+ 
+  
   .day {
-    height: 60%;
+   
     text-align:center;
-    font-size: 14px;
+    font-size: 20px;
   }
   
   .wday-0 {}
@@ -163,7 +166,8 @@ input {
   .wday-6 {}
   .today {
     //background: #FFA0A0;
-    border: 2px solid #FFA0A0;
+    border: 3px solid #FF0000; //赤い枠
+    background: #FFFFFF;
   }
   .past {
     
@@ -173,13 +177,13 @@ input {
   }
   .start-date {}
   .prev-month {
-    background: #ffffff;
-    color: #c0c0c0;
+    background: #FFFFFF;
+    color: #C0C0C0; //先月の日の色を灰色　
     
   }
   .next-month {
-    background: #ffffff;
-    color: #c0c0c0;
+    background: #FFFFFF;
+    color: #C0C0C0; //来月の日の色を灰色
     
   }
   .current-month {}

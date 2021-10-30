@@ -33,14 +33,14 @@
     <%= link_to("動画一覧に戻る", user_path(@user.id), class:"btn btn-outline-primary btn-sm") %>
   </div>
 
-
   <div class="col-md-3">
     <div id="calendar"></div>
     <!-- もしユーザーがログインしていたら -->
     <% if @user.id == current_user.id %>
       <%= month_calendar(schedules: @schedules) do |date, schedules| %>
+        <!-- 日だけ表示-->
         <%= date.day %>
-
+          <!-- スケジュールの表示-->
           <% schedules.each do |schedule| %>
             <div>
               <%= schedule.place %>

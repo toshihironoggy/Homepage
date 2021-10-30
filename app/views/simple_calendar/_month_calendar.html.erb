@@ -1,5 +1,6 @@
 <div class="simple-calendar">
   <div class="text-center calendar-heading">
+    <!--年月、矢印の表示 -->
     <h4>
     <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view %>
     <span class="calendar-title"><%= start_date.year %>年<%= t('date.month_names')[start_date.month] %> </span>
@@ -10,8 +11,9 @@
   <table class="table">
     <thead>
       <tr>
+        <!--曜日の表示-->
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th><%= t('date.abbr_day_names')[day.wday]  %></th>
         <% end %>
       </tr>
     </thead>
