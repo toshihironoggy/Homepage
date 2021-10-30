@@ -9,15 +9,16 @@
     <!-- bootstrap　エラーメッセージ -->
     <%= bootstrap_devise_error_messages! %>
   
-    <!-- メールアドレス -->
+  
+    <!-- メールアドレス labelのclass="required"は必須マークを表示させるため-->
     <div class="form-group">
-      <%= f.label :email %>
+      <label class="required">メールアドレス</label>
       <%= f.email_field :email, autocomplete: 'email', class: 'form-control' ,placeholder: 'user@example.com(50字以内)' %>
     </div>
   
     <!-- パスワード -->
     <div class="form-group">
-      <%= f.label :password %>
+      <label class="required">パスワード</label>
       <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control', placeholder: '半角英数6~50字以内' %>
   
     <% if false %>--------------------------
@@ -29,7 +30,7 @@
     
     <!-- パスワード　確認用 -->
     <div class="form-group">
-      <%= f.label :password_confirmation %>
+      <label class="required">確認用パスワード</label>
       <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control', placeholder: '上記と同じパスワード' %>
     </div>
     
@@ -38,21 +39,18 @@
       <%= f.label :name %>
       <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: '50字以内'%>
     </div>
-
+    
+    
     <!-- ボタン-->  
-    <div class="form-group">
-      <%= f.submit t('.sign_up'), class: 'btn btn-primary col-md-12' %>
+    <div class="form-group text-center">
+      <%= f.submit t('.sign_up'), class: 'btn btn-primary col-md-4' %>
     </div>
   <% end %>
   
    <!--ログインはこちらから-->
-  <div class="boxA">
-    <div class="from-here">
+    <div class="text-center">
       <%= render 'devise/shared/links' %> 
     </div>
-    <div class="arrow">
-      <span class="fa fa-angle-right" style="color:grey;"></span>
-    </div>
-  </div>
+  
 
 </div>

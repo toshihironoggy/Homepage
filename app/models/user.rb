@@ -6,8 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
-         
-  validates :username, uniqueness: { case_sensitive: :false }, length: { minimum: 1, maximum: 50 }
+  
+  #allow_blankでusernameは空欄でもok       
+  validates :username, uniqueness: { case_sensitive: :false }, length: { minimum: 1, maximum: 50 }, allow_blank: true
+  
   validates :email ,uniqueness: { case_sensitive: :false} ,  length: { maximum: 50 }
   
   has_many :schedules
