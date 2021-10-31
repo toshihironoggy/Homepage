@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   
   #google map表示
   #root to: 'maps#index'
-  #root to: 'shops#index'
-  
-  
   
   get 'maps/index' =>'maps#index'
   #↓これがないとNo routes match [POST] "/"がでる
@@ -35,10 +32,7 @@ Rails.application.routes.draw do
   get 'mogisupple/index' => "mogisupple#index"
   get 'mogisupple/:id' => "mogisupple#show"
   
-  #resources :mogisupple
+  resources :mogisupple
    
   resources :users, :only => [:show]
-  
-  resources :events
- 
 end

@@ -1,4 +1,6 @@
+<!--rowクラスで、ユーザー情報と動画一覧とカレンダーを並列に表示-->
 <div class="row">
+  <!--ユーザーの写真と名前を表示-->
   <aside class="col-md-3">
     <h3>
       <% if @user.avatar? %>
@@ -10,29 +12,43 @@
     </h3>
   </aside>
 
+  <!--動画一覧を表示-->
   <div class="col-md-6">
     <% @movies.each do |movie| %>
       <div class="box2">
         <div class="movie-title">
-          <span class="fa fa-film" style="color:red;"></span>
-            <%= link_to movie.title, controller: :mogisupple, action: :show, id: movie.id , :style=>"color:#000000;" %>
-            <!-- mogisupple#showにリンクするように設定-->
+          <!--映画のアイコン-->
+          <i class="fa fa-film" style="color:red;"></i> 
+          <%= movie.title %>
         </div>
-        
+          
         <% if Watched.find_by(user_id: @user.id, movie_id: movie.id) %>
-         watched
+         <i class="fa fa-check"></i>
+        <% else %> 
+          <i class="fa fa-check" style="color:#E6E6E6";></i>
         <% end %>
         
-        <% movie.tag_list.add(movie.tag_name.split(","))%>
         
+        <!--タグ-->
+        
+        <% movie.tag_list.add(movie.tag_name.split(","))%>
         <% movie.tag_list.each do |tag| %>
           <%= link_to tag, user_path(@user.id, search_tag: tag), class: "btn btn-outline-primary btn-sm" %>
         <% end %>
+        
+        
+        <!-- リンク mogisupple#showへ設定、中かっこで囲まないとbootstrapが実行されない-->
+        <div class="watch-button">
+          <%= link_to "動画を観る", {controller: :mogisupple, action: :show, id: movie.id}, class: "btn btn-light" %>
+        </div>
+        
+        
       </div>
     <% end %>
-    <%= link_to("動画一覧に戻る", user_path(@user.id), class:"btn btn-outline-primary btn-sm") %>
+    <%= link_to("動画一覧に戻る", user_path(@user.id), class:"btn btn-primary btn-sm") %>
   </div>
 
+  <!--カレンダーを表示-->
   <div class="col-md-3">
     <div id="calendar"></div>
     <!-- もしユーザーがログインしていたら -->
