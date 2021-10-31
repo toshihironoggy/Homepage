@@ -46,8 +46,9 @@ header{
   padding: 0.2rem 0.2rem 0.2rem 0.2rem ;        /* 要素の内側の余白 */
 }
 
+/***
 a:link { color: #0000ff; }
-
+***/
 
 
 ul {
@@ -76,6 +77,7 @@ li {
   color: #00f;
 }
 
+
 label {
     display: block;
     margin: 0 0 0.2rem 0;
@@ -85,6 +87,7 @@ label {
     background : dark;
     cursor :pointer;
 }
+
 
 /***
 .contents{
