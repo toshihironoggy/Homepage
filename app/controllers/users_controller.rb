@@ -12,7 +12,12 @@ class UsersController < ApplicationController
       @movies = Movie.all
     end
     
+    
+    @watched_count = Watched.where(user_id: @user.id).count
+    
+    
     @schedules = @user.schedules
+    
   end
 
 
