@@ -34,14 +34,13 @@
       <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control', placeholder: '上記と同じパスワード' %>
     </div>
     
-    <!-- 名前 -->
+    <!-- 名前、10字以内-->
     <div class="form-group">
       <%= f.label :name %>
-      <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: '50字以内'%>
+      <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: '10字以内'%>
     </div>
     
-    
-    <!-- ボタン-->  
+    <!-- 新規登録ボタン-->  
     <div class="form-group text-center">
       <%= f.submit t('.sign_up'), class: 'btn btn-primary col-md-4' %>
     </div>

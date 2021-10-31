@@ -1,35 +1,47 @@
-<div class="col-md-6 offset-md-3">
+<!--サンプル動画の一覧を表示-->
+  <div class="col-md-6  offset-md-3">
+    <h2 style="text-align:center">
+    <span class="fa fa-film" style="color:red;"></span>サンプル動画
+    </h2>
+    
+    <% @movies.each do |movie| %>
+      <div class="box2">
+        <div class="movie-title">
+          <!--映画のアイコン-->
+          <i class="fa fa-film" style="color:red;"></i> 
+          <%= movie.title %>
+        </div>
+          
+        <% if false %>-------------  
+        <% if Watched.find_by(user_id: @user.id, movie_id: movie.id) %>
+         <i class="fa fa-check"></i>
+        <% else %> 
+          <i class="fa fa-check" style="color:#E6E6E6";></i>
+        <% end %>
+        -------------<% end %>
+        
+        <!--タグ-->
+        <% movie.tag_list.add(movie.tag_name.split(","))%>
+        <% movie.tag_list.each do |tag| %>
+          <%= link_to tag, mogisupple_index_path(search_tag: tag), class: "btn btn-outline-primary btn-sm" %>
+        <% end %>
+        
+        
+        <!-- リンク mogisupple#showへ設定、中かっこで囲まないとbootstrapが実行されない-->
+        <div class="watch-button">
+          <%= link_to "動画を観る", {controller: :mogisupple, action: :show, id: movie.id}, class: "btn btn-light" %>
+        </div>
+        
+        
+      </div>
+    <% end %>
+    <%= link_to("動画一覧に戻る", mogisupple_index_path, class:"btn btn-primary btn-sm") %>
+  </div>
 
-  <h1 style="text-align:center" class="mt-3 mb-3">
-    <span class="fa fa-film" style="color:red;"></span>IT'S KEY
-    </h1>
-    <p class="center">
-    IT'S KEYは動画で解説するサイトです
-    </p>
-    
-    <%= link_to("サンプル動画を観る", root_path, class:"btn btn-outline-primary btn-block") %>
-    
-    
-    
-    <hr>
-    <p><b>
-    ログイン
-    </b></p>
-    会員の方は、メールアドレスとパスワードでログインしてください
-    <%= link_to 'ログイン', new_user_session_path, class:"btn btn-outline-primary btn-block" %>
-    
-    <hr>
-    <p><b>
-    まだ会員登録されていない方
-    </b></p>
-    
-    はじめて利用されてる方は、こちらから会員登録するとすべての動画が視聴できます。
-    <%= link_to '新規登録', new_user_registration_path, class:"btn btn-outline-primary btn-block" %>
-    
-    
-    
-    
-</div>     
+</div>
+
+
+
 
 <% if false %>----------------------------------------
 <p>

@@ -7,8 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
   
-  #allow_blankでusernameは空欄でもok       
-  validates :username, uniqueness: { case_sensitive: :false }, length: { minimum: 1, maximum: 50 }, allow_blank: true
+  #名前のvalidation、10字以内、allow_blankでusernameは空欄でもok       
+  validates :username, uniqueness: { case_sensitive: :false }, length: { minimum: 1, maximum: 10 }, allow_blank: true
   
   validates :email ,uniqueness: { case_sensitive: :false} ,  length: { maximum: 50 }
   

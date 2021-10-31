@@ -9,7 +9,7 @@
     
     <!--ボタンを中央に-->
     <div class="text-center">
-      <%= link_to("サンプル動画を観る", root_path, class:"btn btn-primary col-md-4") %>
+      <%= link_to("サンプル動画を観る", mogisupple_index_path, class:"btn btn-primary col-md-4") %>
     </div>
     <hr>
     <p><b>
@@ -21,7 +21,6 @@
     ---------------<% end %>
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <!-- bootstrap　エラーメッセージ -->
 
     <!-- メールアドレス -->
     <div class="row">
