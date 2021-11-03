@@ -108,3 +108,5 @@ gem 'momentjs-rails'
 
 #simple calendar
 gem 'simple_calendar', '~> 2.0'
+
+gem "aws-sdk-s3", require: false
