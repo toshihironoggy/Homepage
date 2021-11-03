@@ -9,7 +9,7 @@
     
     <!--ボタンを中央に-->
     <div class="text-center">
-      <%= link_to 'サンプル動画を観る', mogisupple_index_path, class: "btn btn-primary col-md-4" %>
+      <%= link_to 'サンプル動画一覧', mogisupple_index_path, class: "btn btn-primary btn-block" %>
     </div>
 
     <hr>
@@ -60,7 +60,7 @@
   
     <!-- ボタン-->  
     <div class="form-group text-center">
-      <%= f.submit  t('.sign_in'), class: 'btn btn-primary col-md-4' %>
+      <%= f.submit  t('.sign_in'), class: 'btn btn-primary btn-block' %>
     </div>
   <% end %>
   
@@ -77,6 +77,6 @@
     
     はじめて利用されてる方は、こちらから会員登録するとすべての動画が視聴できます。
     <div class="text-center">
-    <%= link_to '新規登録', new_user_registration_path, class:"btn btn-primary col-md-4" %>
+    <%= link_to '新規登録', new_user_registration_path, class:"btn btn-info btn-block" %>
     </div>
 </div>     

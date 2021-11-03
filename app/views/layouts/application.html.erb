@@ -53,9 +53,13 @@
     </header>
       
     <div class="contents">
+      <% if false %>------------------------
       <div>
         <p class="text-success"><%= notice %></p>
         <p class="text-danger"><%= alert %></p>
+    ------------------<% end %>
+    
+    <%= render 'layouts/flash_messages' %>
     
         <div class="container">
           <%= yield %>

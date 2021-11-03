@@ -30,7 +30,7 @@
     
     <!-- パスワード　確認用 -->
     <div class="form-group">
-      <label class="required">確認用パスワード</label>
+      <label class="required">パスワード(確認用)</label>
       <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control', placeholder: '上記と同じパスワード' %>
     </div>
     
@@ -42,7 +42,7 @@
     
     <!-- 新規登録ボタン-->  
     <div class="form-group text-center">
-      <%= f.submit t('.sign_up'), class: 'btn btn-primary col-md-4' %>
+      <%= f.submit t('.sign_up'), class: 'btn btn-primary btn-block' %>
     </div>
   <% end %>
   
