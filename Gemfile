@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
@@ -76,9 +76,9 @@ gem 'font-awesome-rails'
 gem 'kaminari'
 
 # Bootstrap
-gem 'bootstrap','~> 4.1.1'
+gem 'bootstrap','~> 4.5'
 gem 'jquery-rails'
-gem 'bootstrap-sass'
+#gem 'bootstrap-sass'
 gem 'devise-bootstrap-views', '~> 1.0'
 
 # Devise
