@@ -8,6 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   #storage :file
   #storage :fog
+  #環境に応じて自動でアップロード先を切り替えS
   if Rails.env.development?
     storage :file
   elsif Rails.env.test?
