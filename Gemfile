@@ -109,3 +109,8 @@ gem 'momentjs-rails'
 #simple calendar
 gem 'simple_calendar', '~> 2.0'
 
+gem 'aws-sdk', '~> 2'
+
+gem 'fog-aws'
+gem 'dotenv-rails'
+

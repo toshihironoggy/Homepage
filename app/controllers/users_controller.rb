@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  
+  
   before_action :authenticate_user!
   
   def show
@@ -19,6 +21,5 @@ class UsersController < ApplicationController
     @schedules = @user.schedules
     
   end
-
 
 end
