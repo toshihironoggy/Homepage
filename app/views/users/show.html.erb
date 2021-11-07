@@ -44,10 +44,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="view-left">
-              <% watched = Watched.where(user_id: @user.id, movie_id: movie.id) %>
-              <% if watched %> 
-                <%= "#{watched.count}view".pluralize(watched.count) %> 
-              <% end %>
+              <% watched_count = Watched.where(user_id: @user.id, movie_id: movie.id).count %>
+              <%= "#{watched_count}view".pluralize(watched_count) %> 
             </div>
           </div>
           
