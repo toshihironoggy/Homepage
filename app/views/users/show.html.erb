@@ -11,7 +11,7 @@
       <% end %>
       <%= @user.username %>
     </h3>
-    <i class="fa fa-film" style="color:red;"></i> <%= @watched_count %>回   
+      
   </aside>
 
   <!--動画一覧を表示-->
@@ -22,15 +22,18 @@
           <!--映画のアイコン-->
           <i class="fa fa-film" style="color:red;"></i> 
           <%= movie.title %>
+          
         </div>
         
+        <% if false %>-------------------
         <!--チェックマークの表示-->  
         <% if Watched.find_by(user_id: @user.id, movie_id: movie.id) %>
          <i class="fa fa-check"></i>
         <% else %> 
           <i class="fa fa-check" style="color:#E6E6E6";></i>
         <% end %>
-        
+        <%= Watched.where(user_id: @user.id, movie_id: movie.id).count %>
+        -----------<% end %>
         
         <!--タグ-->
         <% movie.tag_list.add(movie.tag_name.split(","))%>
@@ -38,12 +41,21 @@
           <%= link_to tag, user_path(@user.id, search_tag: tag), class: "btn btn-outline-primary btn-sm" %>
         <% end %>
         
-        
-        <!-- リンク mogisupple#showへ設定、中かっこで囲まないとbootstrapが実行されない-->
-        <div class="watch-button">
-          <%= link_to "動画を観る", {controller: :mogisupple, action: :show, id: movie.id}, class: "btn btn-light" %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="view-left">
+              <% watched_count = Watched.where(user_id: @user.id, movie_id: movie.id).count %>
+              <%= "#{watched_count}view".pluralize(watched_count) %> 
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <!-- リンク mogisupple#showへ設定、中かっこで囲まないとbootstrapが実行されない-->  
+            <div class="button-right">
+              <%= link_to "動画を観る", {controller: :mogisupple, action: :show, id: movie.id}, class: "btn btn-light" %>
+            </div>
+          </div>
         </div>
-        
         
       </div>
     <% end %>
