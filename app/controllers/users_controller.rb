@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  
-  
-  
   before_action :authenticate_user!
   
   def show
@@ -16,10 +13,7 @@ class UsersController < ApplicationController
     
     
     #@watched_count = Watched.where(user_id: @user.id).count
-    
-    
     @schedules = @user.schedules
-    
   end
 
 end

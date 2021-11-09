@@ -75,6 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
      devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
      devise_parameter_sanitizer.permit(:account_update, keys: [:password])
      devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:remove_avatar])
   end
 
   #アカウント登録後のリダイレクト先
