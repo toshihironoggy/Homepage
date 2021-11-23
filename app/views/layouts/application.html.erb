@@ -4,9 +4,10 @@
     <title>HomePage</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!--<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+    <%= javascript_include_tag "application", defer: true %>
     
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -25,7 +26,7 @@
   
     <!-- gon用 -->
     <%= include_gon %>
-    <%= javascript_include_tag "application" %>
+    
     
     <!-- fullcalendar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
@@ -41,8 +42,8 @@
       <nav>
         <ul class="nav navbar-right" > <!--classはRailsチュート参照-->
         <% if user_signed_in? %>
-          <li><%= link_to current_user.username, new_user_session_url, :style=>"color:white;" %></li>
-          <li><%= link_to 'プロフィール変更' , edit_user_registration_path, :style=>"color:white;" %></li>
+          <li><%= link_to current_user.username, profile_path(current_user), :style=>"color:white;" %></li>
+          <li><%= link_to '変更' , edit_user_registration_path, :style=>"color:white;" %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
         <% else %>
           <li><%= link_to 'ログイン', new_user_session_path, :style=>"color:white;" %></li>

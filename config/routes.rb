@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   get 'mogisupple/:id' => "mogisupple#show"
   
   resources :mogisupple
-   
   resources :users, :only => [:show]
+  
+  devise_scope :user do
+    get '/:id/' => 'users/registrations#profile', as: 'profile'  
+  end
 end

@@ -101,6 +101,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    croppie_rails (2.4.0)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -326,6 +327,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  croppie_rails
   devise
   devise-bootstrap-views (~> 1.0)
   devise-i18n

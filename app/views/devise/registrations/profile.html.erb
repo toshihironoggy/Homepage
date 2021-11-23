@@ -1,0 +1,40 @@
+<div class="profile_container" style="max-width:750px;margin:0 auto;">
+      <section class="profile-side"> 
+        <figure class="circle-avatar text-center">
+          <% if @user.avatar? %>
+            <%= image_tag(@user.avatar.to_s, :class => "gambar", id: 'item-img-output') %>
+          <% else %>
+            <%= image_tag 'no_avatar.png', class: "gambar", id: "item-img-output" %>
+          <% end %>
+  
+          <% if @user == current_user %>
+            <label class="cabinet center-block">写真を選択
+              <input type="file" class="item-img file center-block" name="file_photo" style="display:none;" />
+            </label>
+          <% end %>
+        </figure>
+        <div class="profile_user_name_wrapper">
+          <h2 class="profile_user_name" style="margin:0;"><%= @user.username %></h2>
+        </div>
+      </section><!-- profile-side -->
+      <div class="modal fade" id="cropImagePop" style="height:100vh;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">
+                <?=multiLanguage( "Edit Foto" , "Edit Photo" )?></h4>
+            </div>
+            <div class="modal-body">
+              <div id="upload-demo" class="center-block"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+              <button type="button" id="cropImageBtn" class="btn btn-primary">決定</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- modal -->
+    </div> 
+  
+  

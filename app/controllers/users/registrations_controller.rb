@@ -43,6 +43,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def profile
+    @user = User.find(params[:id])
+    #@user = User.friendly.find(params[:id])
+  end
 
 
   # DELETE /resource
