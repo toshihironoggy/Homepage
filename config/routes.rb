@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:show]
   
   devise_scope :user do
-    get '/:id/' => 'users/registrations#profile', as: 'profile'  
+    get '/:id/' => 'users/registrations#profile', as: 'profile' 
+    post '/users/avatar', to: 'users/registrations#update_avatar', as: 'update_avatar'
   end
 end

@@ -42,7 +42,8 @@
       <nav>
         <ul class="nav navbar-right" > <!--classはRailsチュート参照-->
         <% if user_signed_in? %>
-          <li><%= link_to current_user.username, profile_path(current_user), :style=>"color:white;" %></li>
+          <li><%= link_to current_user.username, user_path(current_user), :style=>"color:white;" %></li>
+          <li><%= link_to 'プロフィール', profile_path(current_user), :style=>"color:white;" %></li>
           <li><%= link_to '変更' , edit_user_registration_path, :style=>"color:white;" %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
         <% else %>

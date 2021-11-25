@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0' # Use Redis adapter to run Action Cable in production
 # gem 'bcrypt', '~> 3.1.7'
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick'
 # gem 'capistrano-rails', group: :development
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -33,7 +33,8 @@ gem "geocoder" # Goosle mapで住所→経度・緯度
 gem "gon" # JSとの連携
 gem "dotenv-rails" #Google APIを公開さえないように
 gem 'mini_magick'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave'#, '~> 2.0'
+gem 'carrierwave-base64'
 # gem 'jquery-rails', '4.3.3'←すでに入っていた
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
