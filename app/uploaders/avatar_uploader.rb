@@ -6,7 +6,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   #storage :file
   #storage :fog
-  #環境に応じて自動でアップロード先を切り替えS
+  #環境に応じて自動でアップロード先を切り替え
   if Rails.env.development?
     storage :file
   elsif Rails.env.test?
@@ -28,8 +28,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   #end
   
-  # 画像の上限を700pxにする
-  process :resize_to_limit => [700, 700]
+  # 画像の上限を700pxにする #コメントアウトすると写真がアップできない
+  #process :resize_to_limit => [700, 700]
   
   #
   # Process files as they are uploaded:
