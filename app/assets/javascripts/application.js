@@ -15,7 +15,7 @@
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/lang/ja
-//= require jquery3
+
 //= require popper
 //= require bootstrap-sprockets
 //= require croppie

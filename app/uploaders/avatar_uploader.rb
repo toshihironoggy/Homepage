@@ -20,7 +20,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   
-  
   #デフォルト画像の設定
   # Provide a default URL as a default if there hasn't been a file uploaded:
   #def default_url(*args)
@@ -29,21 +28,22 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   #end
   
-
+  # 画像の上限を700pxにする
+  process :resize_to_limit => [700, 700]
+  
+  #
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something
   # end
+  
+  # サムネイル画像
+  #version :thumb do
+  #   process resize_to_fill: [100, 100]
+  #end
 
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #    process resize_to_fit: [30, 30]
-  # end
-
-  # Add an allowlist of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
   def extension_allowlist
      %w(jpg jpeg gif png)
   end

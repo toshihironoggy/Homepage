@@ -28,7 +28,7 @@ $(document).ready(function() {
                 type: 'circle'
               },
               enforceBoundary: false,
-              enableExif: ture
+              enableExif: true
             });
             $('#cropImagePop').on('shown.bs.modal', function(){
               // alert('Shown pop');

@@ -10,9 +10,8 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
   
   #名前のvalidation、10字以内、allow_blankでusernameは空欄でもok       
-  validates :username, uniqueness: { case_sensitive: :false }, length: { minimum: 1, maximum: 10 }, allow_blank: true
-  
-  validates :email ,uniqueness: { case_sensitive: :false} ,  length: { maximum: 50 }
+  validates :username, uniqueness: { case_sensitive: :false }, length: { minimum: 1, maximum: 10 }, allow_blank: true, on: [:validates_profile]
+  validates :email ,uniqueness: { case_sensitive: :false} ,  length: { maximum: 50 }, on: [:validates_profile]
   
   has_many :schedules
   
