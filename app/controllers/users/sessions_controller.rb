@@ -2,6 +2,11 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  
+  #「ログイン後」に遷移したいページへ
+  def after_sign_in_path_for(resource)
+    user_path(resource.id)
+  end
 
   # GET /resource/sign_in
   # def new

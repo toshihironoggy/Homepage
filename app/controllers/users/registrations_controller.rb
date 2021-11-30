@@ -35,7 +35,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in resource_name, resource, :bypass => true
       #respond_with resource, :location => after_update_path_for(resource)
       
-      #アカウント編集後、users#showにレダイレクト
+      #アカウント編集後、users#showにリダイレクト
       redirect_to resource
     else
       clean_up_passwords resource
